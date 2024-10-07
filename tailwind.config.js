@@ -33,6 +33,17 @@ export default {
           12: "#2E2A41",
           13: "#6C7275",
         },
+        s: {
+          1: "#FFFFFF",
+          2: "#D9F4FF",
+          3: "#4B5780",
+          4: "#479ED7",
+          5: "#263464",
+          6: "#B1CBEF",
+          7: "#19620D",
+          8: "#000000",
+          9: "#020202",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sora)", ...fontFamily.sans],
