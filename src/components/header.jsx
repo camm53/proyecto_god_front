@@ -31,7 +31,7 @@ const header = () => {
             <a key={item.id} href={item.url} className={` block relative text-2xl px-6 md:-mr0.25 md:text-sm text-s-9 md:h-[2.6rem] md:flex  items-center justify-center
               ${item.onlyMobile  ? 'md:hidden' :"" }
               ${item.url === pathname.hash ? 'z-2 md:text-s-7 ':
-                pathname.hash==="#home" ? "md:text-s-1/100 hover:md:text-s-2/90 hover:md:border-s-6 hover:md:boder-solid" : 
+                pathname.hash==="#home" ? "md:text-s-1/100 hover:md:text-s-2/90 hover:md:border-s-6 hover:md:border-b hover:md:boder-solid" : 
                 "hover:md:text-s-5 hover:md:border-b hover:md:boder-solid hover:md:border-s-10" }`}>
               {item.title}
             </a>
