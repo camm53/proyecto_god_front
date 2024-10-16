@@ -7,7 +7,7 @@ const Button = ({className,href,onClick,children,px,white}) => {
   ${px||'px-7'} ${className||''}` ;
     
   const renderbutton = ()=> (
-    <button className={classes}>
+    <button className={classes} onClick={onClick}>
         <span>{children}</span>
         {/* {ButtonSvg(white)} */}
     </button>
