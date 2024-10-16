@@ -17,6 +17,7 @@
   scroll-behavior: smooth
 }
 
+
 @layer base {
   body {
     @apply font-sans bg-s-2 text-s-1 text-base ;
