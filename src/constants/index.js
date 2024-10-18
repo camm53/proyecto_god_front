@@ -54,8 +54,8 @@ export const navigation = [
   },
   {
     id: "3",
-    title: "Roadmap",
-    url: "#roadmap",
+    title: "Servicios",
+    url: "#servicios",
   },
   {
     id: "4",
@@ -330,18 +330,18 @@ export const socials = [
 export const servicios = [
   {
     id: "0",
-    title: "Features",
-    url: "#features",
+    title: "primero",
+    url: "#primero",
   },
   {
     id: "1",
-    title: "Pricing",
-    url: "#pricing",
+    title: "segundo",
+    url: "#segundo",
   },
   {
     id: "2",
-    title: "How to use",
-    url: "#how-to-use",
+    title: "tercero",
+    url: "#tercero",
   },
   {
     id: "3",
