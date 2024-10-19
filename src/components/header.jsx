@@ -5,7 +5,7 @@ import {navigation} from "../constants";
 import {servicios} from "../constants";
 import Button from "./button";
 import {HamburgerMenu} from "./design/Header";
-import { useState,useRef } from "react";
+import { useState,useRef,useEffect } from "react";
 import MenuSvg from "../assets/svg/MenuSvg" ; 
 
 const header = () => {
@@ -30,8 +30,19 @@ const header = () => {
         setAction(false)
       }else{setAction(true)}
     }
-
     const [enservicio, setAction] = useState(false);
+    useEffect(() => {
+      const content = contentRef.current;
+      
+      // Safari-friendly: Set to specific scrollHeight when opening, set to 0 when closing
+      if (enservicio) {
+        content.style.maxHeight = `${content.scrollHeight}px`;
+      } else {
+        content.style.maxHeight = '0px';
+      }
+    }, [enservicio]);
+
+    
 
     const handleMouseEnter = () => setAction(true);
     const handleMouseLeave = () => setAction(false);
@@ -83,7 +94,7 @@ const header = () => {
             </button>
             {item.title === "Servicios" ? (
               <div ref={contentRef} className={`transition-all duration-250 ${enservicio ? `block md:block ` : "  invisible" } md:fixed md:shadow-lg bg-sky-50 overflow-hidden`}
-              style={{ maxHeight: enservicio ? `${contentRef.current.scrollHeight}px` : '0px' }}>
+              >
                 {servicios.map((item)=>(
                   <a key={item.id} href={item.url} onClick={handleclick} className={`block relative md:hover:bg-s-3 text-2xl px-11 py-6 md:py-0 md:px-6 md:text-sm text-s-9 
                   md:h-[2.6rem] md:flex  items-center `}
