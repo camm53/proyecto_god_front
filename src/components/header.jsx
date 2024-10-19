@@ -5,11 +5,12 @@ import {navigation} from "../constants";
 import {servicios} from "../constants";
 import Button from "./button";
 import {HamburgerMenu} from "./design/Header";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import MenuSvg from "../assets/svg/MenuSvg" ; 
 
 const header = () => {
     const pathname= useLocation();
+    const contentRef = useRef(null);
     const [opennav, closenav] = useState(false);
     const togglenav = () => {
       if (opennav){
@@ -80,12 +81,12 @@ const header = () => {
                 onMouseLeave={handleMouseLeave}>
               {item.title}
             </button>
-            {/* {item.title==="Servicios"?althandleclick:handleclick} */}
             {item.title === "Servicios" ? (
-              <div className={`${enservicio ? "block md:block" : "hidden" } md:fixed md:shadow-lg`}>
+              <div ref={contentRef} className={`transition-all duration-250 ${enservicio ? `block md:block ` : "  invisible" } md:fixed md:shadow-lg bg-sky-50 overflow-hidden`}
+              style={{ maxHeight: enservicio ? `${contentRef.current.scrollHeight}px` : '0px' }}>
                 {servicios.map((item)=>(
                   <a key={item.id} href={item.url} onClick={handleclick} className={`block relative md:hover:bg-s-3 text-2xl px-11 py-6 md:py-0 md:px-6 md:text-sm text-s-9 
-                  md:h-[2.6rem] md:flex  items-center  bg-sky-50 `}
+                  md:h-[2.6rem] md:flex  items-center `}
                   onMouseEnter={handleMouseEnter} 
                   onMouseLeave={handleMouseLeave}>
               {item.title}
