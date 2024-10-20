@@ -35,11 +35,11 @@ const header = () => {
       }else{setAction(true)}
     }
     const [enservicio, setAction] = useState(false);
-
+    const parentcontent = parentref.current;
     useEffect(() => {
       const content = contentRef.current;
-      const navcontent = navcontentRef.current;
-      const parentcontent = parentref.current;
+      
+      
       
       // Safari-friendly: Set to specific scrollHeight when opening, set to 0 when closing
       if (enservicio) {
@@ -47,7 +47,11 @@ const header = () => {
       } else {
         content.style.maxHeight = '0px';
       }
-      
+      // if (opennav) {
+      //   navcontent.style.maxHeight =`100%`;
+      // } else{
+      //   navcontent.style.maxHeight = `${parentcontent.offsetHeight}px`;
+      // }
 
     }, [enservicio, opennav]);
 
@@ -83,7 +87,7 @@ const header = () => {
     ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent shadow-[inset_0_12rem_4rem_-5rem_rgba(0,0,0,0.4)] md:shadow-[inset_0_13rem_4rem_-5rem_rgba(0,0,0,0.4)] pb-[6rem] "
       :"border-b border-s-6 shadow-md"}`;
     const banner=`transition-colors duration-125 flex items-center px-5 lg:px-7.5 xl:px-10 py-8 w-screen ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent":"bg-s-1"}` ;
-    const navsetup=`transition-all duration-150 ${opennav ? "flex md:border-none h-[100%]" : " invisible h-0" } fixed top-[6.65rem] left-0 bottom-0 right-0 bg-s-1 
+    const navsetup=`transition-all duration-150 ${opennav ? "flex md:border-none h-[100%]" :  `invisible h-15` } fixed top-[6.65rem] left-0 bottom-0 right-0 bg-s-1 
     md:static md:flex md:mx-auto text-s-9 md:bg-transparent md:visible ` ;
     // md:bg-transparent
     const navitems=` flex overflow-y-auto no-scrollbar md:flex-wrap relative z-2 
@@ -94,7 +98,7 @@ const header = () => {
 
     <div className={classes}>
       <div  className={banner}>
-      <a onClick={handleclick} className="flex  items-center  w-[8.5rem] min-w-[8.5rem] xl-mr-8 md:w-[10rem]" href="#home">
+      <a onClick={handleclick} className="flex  items-center  w-[8.5rem] min-w-[8.5rem] xl-mr-8 md:w-[10rem] " href="#home">
         <img  src={setecalogo} width={160} height={40} className={`w-full h-auto object-contain 
           drop-shadow-[0_0_.05rem_rgba(255,255,255,1)]`} alt="seteca"/>
         
