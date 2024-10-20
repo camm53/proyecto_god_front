@@ -44,17 +44,17 @@ const header = () => {
 
     
 
-    const handleMouseEnter = () => setAction(true);
-    const handleMouseLeave = () => setAction(false);
+    const handleMouseEnter = () => { window.innerWidth >= 768 ? setAction(true): undefined};
+    const handleMouseLeave = () => { window.innerWidth >= 768 ? setAction(false): undefined};
 
     const classes=`bg-s-1 fixed top-0 left-0 w-full z-50  
-    ${pathname.hash==="#home"?"bg-transparent shadow-[inset_0_12rem_4rem_-5rem_rgba(0,0,0,0.4)] md:shadow-[inset_0_13rem_4rem_-5rem_rgba(0,0,0,0.4)] pb-[6rem] "
+    ${pathname.hash==="#home" && !opennav?"bg-transparent shadow-[inset_0_12rem_4rem_-5rem_rgba(0,0,0,0.4)] md:shadow-[inset_0_13rem_4rem_-5rem_rgba(0,0,0,0.4)] pb-[6rem] "
       :"border-b border-s-6 shadow-md"}`;
     const banner=`flex items-center px-5 lg:px-7.5 xl:px-10 py-8 w-screen ` ;
     const navsetup=`${opennav ? "flex md:border-none" : "hidden" } fixed top-[6.65rem] left-0 bottom-0 right-0 bg-s-1 
     md:static md:flex md:mx-auto text-s-9 md:bg-transparent` ;
     // md:bg-transparent
-    const navitems=`flex md:flex-wrap relative z-2 flex flex-col items-start justify-start md:justify-center pt-[2rem] md:p-0 w-full h-full m-auto md:flex-row text-s-1/20 md:h-auto`;
+    const navitems=`flex overflow-y-auto no-scrollbar md:flex-wrap relative z-2 flex flex-col items-start justify-start md:justify-center pt-[2rem] md:p-0 w-full h-full m-auto md:flex-row text-s-1/20 md:h-auto`;
     const navitem=`block relative text-2xl px-6 md:-mr0.25 md:text-sm`;
     
     const renderheader = (children) =>(
@@ -81,19 +81,22 @@ const header = () => {
                 onMouseLeave={handleMouseLeave}>
               {item.title}
             </a> 
-            <button key={item.id}  onClick={althandleclick} className={`md:hidden relative text-2xl px-6 py-6 md:py-1 md:text-sm text-s-9
+            <div className={`transition-all md:transition-none ${enservicio ? `border-l-[8px] border-s-11 md:border-none` : "" }`}>
+            <button key={item.id}  onClick={althandleclick} className={`md:hidden relative text-2xl px-6 py-6 md:py-1 md:text-sm
+             ${enservicio ? `text-s-11` : "text-s-9" } md:text-s-9
               md:h-[2.6rem]   items-center justify-center 
               ${item.onlyMobile  ? 'md:hidden' :"" }
               ${item.title ==="Servicios"  ? 'block' :"hidden" }
               ${item.url === pathname.hash ? 'z-2 md:text-s-7 ':
                 pathname.hash==="#home" ? "md:text-s-1/100 hover:md:text-s-1/80 hover:md:border-s-1 hover:md:border-b hover:md:boder-solid" : 
                 "hover:md:text-s-5 hover:md:border-b hover:md:boder-solid hover:md:border-s-10" }`}
-                onMouseEnter={item.title==="Servicios"?handleMouseEnter:null} 
-                onMouseLeave={handleMouseLeave}>
+                // onMouseEnter={item.title==="Servicios"?handleMouseEnter:null} 
+                // onMouseLeave={handleMouseLeave}
+                >
               {item.title}
             </button>
             {item.title === "Servicios" ? (
-              <div ref={contentRef} className={`transition-all duration-250 ${enservicio ? `block md:block ` : "  invisible" } md:fixed md:shadow-lg bg-sky-50 overflow-hidden`}
+              <div ref={contentRef} className={`transition-all duration-250 ${enservicio ? `block md:block ` : "  invisible" } md:fixed md:shadow-lg md:bg-sky-50 overflow-hidden`}
               >
                 {servicios.map((item)=>(
                   <a key={item.id} href={item.url} onClick={handleclick} className={`block relative md:hover:bg-s-3 text-2xl px-11 py-6 md:py-0 md:px-6 md:text-sm text-s-9 
@@ -103,6 +106,7 @@ const header = () => {
               {item.title}
             </a>
           ))}</div> ) : null}</div>
+          </div>
           ))}
         </div>
       </nav>
