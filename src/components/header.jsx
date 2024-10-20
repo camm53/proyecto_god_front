@@ -47,11 +47,7 @@ const header = () => {
       } else {
         content.style.maxHeight = '0px';
       }
-      if (opennav) {
-        navcontent.style.maxHeight =`100%`;
-      } else{
-        navcontent.style.maxHeight = `${parentcontent.offsetHeight/2}px`;
-      }
+      
 
     }, [enservicio, opennav]);
 
@@ -97,13 +93,13 @@ const header = () => {
     const renderheader = (children) =>(
 
     <div className={classes}>
-      <div ref={parentref} className={banner}>
+      <div  className={banner}>
       <a onClick={handleclick} className="flex  items-center  w-[8.5rem] min-w-[8.5rem] xl-mr-8 md:w-[10rem]" href="#home">
         <img  src={setecalogo} width={160} height={40} className={`w-full h-auto object-contain 
           drop-shadow-[0_0_.05rem_rgba(255,255,255,1)]`} alt="seteca"/>
         
       </a>
-      <nav ref={navcontentRef} className={navsetup}>
+      <nav className={navsetup}>
         <div className={navitems}>
           {navigation.map((item)=> (
             <div className="w-full md:w-auto">
