@@ -48,7 +48,7 @@ const header = () => {
       if (opennav) {
         navcontent.style.maxHeight =`100%`;
       } else{
-        navcontent.style.maxHeight =`75px`;
+        navcontent.style.maxHeight =`0px`;
       }
 
     }, [enservicio, opennav]);
