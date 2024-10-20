@@ -87,7 +87,7 @@ const header = () => {
     ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent shadow-[inset_0_12rem_4rem_-5rem_rgba(0,0,0,0.4)] md:shadow-[inset_0_13rem_4rem_-5rem_rgba(0,0,0,0.4)] pb-[6rem] "
       :"border-b border-s-6 shadow-md"}`;
     const banner=`transition-colors duration-125 flex items-center px-5 lg:px-7.5 xl:px-10 py-8 w-screen ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent":"bg-s-1"}` ;
-    const navsetup=` ${opennav ? "flex md:border-none transition-all duration-100" : " invisible" } fixed top-[6.65rem] left-0 bottom-0 right-0 bg-s-1 
+    const navsetup=`transition-all duration-150 ${opennav ? "flex md:border-none" : " invisible" } fixed top-[6.65rem] left-0 bottom-0 right-0 bg-s-1 
     md:static md:flex md:mx-auto text-s-9 md:bg-transparent md:visible ` ;
     // md:bg-transparent
     const navitems=` flex overflow-y-auto no-scrollbar md:flex-wrap relative z-2 
