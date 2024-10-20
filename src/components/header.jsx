@@ -11,7 +11,9 @@ import MenuSvg from "../assets/svg/MenuSvg" ;
 const header = () => {
     const pathname= useLocation();
     const contentRef = useRef(null);
+    const navcontentRef = useRef(null);
     const [opennav, closenav] = useState(false);
+    const [scrolled, setScrolled] = useState(true);
     const togglenav = () => {
       if (opennav){
         closenav(false)
@@ -31,8 +33,10 @@ const header = () => {
       }else{setAction(true)}
     }
     const [enservicio, setAction] = useState(false);
+
     useEffect(() => {
       const content = contentRef.current;
+      const navcontent = navcontentRef.current;
       
       // Safari-friendly: Set to specific scrollHeight when opening, set to 0 when closing
       if (enservicio) {
@@ -40,21 +44,51 @@ const header = () => {
       } else {
         content.style.maxHeight = '0px';
       }
-    }, [enservicio]);
+      if (opennav) {
+        navcontent.style.maxHeight =`100%`;
+      } else{
+        navcontent.style.maxHeight =`50px`;
+      }
+
+    }, [enservicio, opennav]);
 
     
+    useEffect(() => {
+      let timeoutId = null;
+  
+      const handleScroll = () => {
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+  
+        timeoutId = setTimeout(() => {
+          setScrolled(!(window.scrollY > 0));
+        }, .2);
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      // Clean up function
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+      };
+    }, []);
 
     const handleMouseEnter = () => { window.innerWidth >= 768 ? setAction(true): undefined};
     const handleMouseLeave = () => { window.innerWidth >= 768 ? setAction(false): undefined};
 
-    const classes=`bg-s-1 fixed top-0 left-0 w-full z-50  
-    ${pathname.hash==="#home" && !opennav?"bg-transparent shadow-[inset_0_12rem_4rem_-5rem_rgba(0,0,0,0.4)] md:shadow-[inset_0_13rem_4rem_-5rem_rgba(0,0,0,0.4)] pb-[6rem] "
+    const classes=`bg-transparent fixed top-0 left-0 w-full z-50  
+    ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent shadow-[inset_0_12rem_4rem_-5rem_rgba(0,0,0,0.4)] md:shadow-[inset_0_13rem_4rem_-5rem_rgba(0,0,0,0.4)] pb-[6rem] "
       :"border-b border-s-6 shadow-md"}`;
-    const banner=`flex items-center px-5 lg:px-7.5 xl:px-10 py-8 w-screen ` ;
-    const navsetup=`${opennav ? "flex md:border-none" : "hidden" } fixed top-[6.65rem] left-0 bottom-0 right-0 bg-s-1 
-    md:static md:flex md:mx-auto text-s-9 md:bg-transparent` ;
+    const banner=`transition-all duration-125 flex items-center px-5 lg:px-7.5 xl:px-10 py-8 w-screen ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent":"bg-s-1"}` ;
+    const navsetup=`transition-all duration-100  ${opennav ? "flex md:border-none" : " invisible" } fixed top-[6.65rem] left-0 bottom-0 right-0 bg-s-1 
+    md:static md:flex md:mx-auto text-s-9 md:bg-transparent md:visible ` ;
     // md:bg-transparent
-    const navitems=`flex overflow-y-auto no-scrollbar md:flex-wrap relative z-2 flex flex-col items-start justify-start md:justify-center pt-[2rem] md:p-0 w-full h-full m-auto md:flex-row text-s-1/20 md:h-auto`;
+    const navitems=` flex overflow-y-auto no-scrollbar md:flex-wrap relative z-2 
+    flex flex-col items-start justify-start md:justify-center pt-[2rem] md:p-0 w-full h-full m-auto md:flex-row text-s-1/20 md:h-auto`;
     const navitem=`block relative text-2xl px-6 md:-mr0.25 md:text-sm`;
     
     const renderheader = (children) =>(
@@ -66,7 +100,7 @@ const header = () => {
           drop-shadow-[0_0_.05rem_rgba(255,255,255,1)]`} alt="seteca"/>
         
       </a>
-      <nav className={navsetup}>
+      <nav ref={navcontentRef} className={navsetup}>
         <div className={navitems}>
           {navigation.map((item)=> (
             <div className="w-full md:w-auto">
@@ -75,7 +109,7 @@ const header = () => {
               ${item.onlyMobile  ? 'md:hidden' :"" }
               ${item.title ==="Servicios"  ? 'hidden' :"block" }
               ${item.url === pathname.hash ? 'z-2 md:text-s-7 ':
-                pathname.hash==="#home" ? "md:text-s-1/100 hover:md:text-s-1/80 hover:md:border-s-1 hover:md:border-b hover:md:boder-solid" : 
+                pathname.hash==="#home" && scrolled? "md:text-s-1/100 hover:md:text-s-1/80 hover:md:border-s-1 hover:md:border-b hover:md:boder-solid" : 
                 "hover:md:text-s-5 hover:md:border-b hover:md:boder-solid hover:md:border-s-10" }`}
                 onMouseEnter={item.title==="Servicios"?handleMouseEnter:null} 
                 onMouseLeave={handleMouseLeave}>
@@ -111,7 +145,7 @@ const header = () => {
         </div>
       </nav>
       <a href="#signup" className={` hidden button text-s-5 md:block mr-8
-              ${pathname.hash==="#home"? "md:text-s-1" : "" }`}>
+              ${pathname.hash==="#home" && scrolled? "md:text-s-1" : "" }`}>
         Crear cuenta
       </a>
       <Button className="hidden md:flex " href="#login">
