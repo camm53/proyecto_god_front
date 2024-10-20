@@ -12,6 +12,7 @@ const header = () => {
     const pathname= useLocation();
     const contentRef = useRef(null);
     const navcontentRef = useRef(null);
+    const parentref = useRef(null);
     const [opennav, closenav] = useState(false);
     const [scrolled, setScrolled] = useState(true);
     const togglenav = () => {
@@ -38,6 +39,7 @@ const header = () => {
     useEffect(() => {
       const content = contentRef.current;
       const navcontent = navcontentRef.current;
+      const parentcontent = parentref.current;
       
       // Safari-friendly: Set to specific scrollHeight when opening, set to 0 when closing
       if (enservicio) {
@@ -48,7 +50,7 @@ const header = () => {
       if (opennav) {
         navcontent.style.maxHeight =`100%`;
       } else{
-        navcontent.style.maxHeight =`0px`;
+        navcontent.style.maxHeight = `${parentcontent.offsetHeight}px`;
       }
 
     }, [enservicio, opennav]);
@@ -95,7 +97,7 @@ const header = () => {
     const renderheader = (children) =>(
 
     <div className={classes}>
-      <div className={banner}>
+      <div ref={parentref} className={banner}>
       <a onClick={handleclick} className="flex  items-center  w-[8.5rem] min-w-[8.5rem] xl-mr-8 md:w-[10rem]" href="#home">
         <img  src={setecalogo} width={160} height={40} className={`w-full h-auto object-contain 
           drop-shadow-[0_0_.05rem_rgba(255,255,255,1)]`} alt="seteca"/>
