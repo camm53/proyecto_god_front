@@ -46,7 +46,7 @@ const App = ()=> {
           something
         </Button>
         <Button className="mt-10" href="#login">
-          awdawawdaawdadadadawdadw
+          something
         </Button>
         <Button className="mt-10" href="https://www.youtube.com/">
           something
