@@ -9,6 +9,42 @@ import {HamburgerMenu} from "./design/Header";
 import { useState,useRef,useEffect } from "react";
 import MenuSvg from "../assets/svg/MenuSvg" ; 
 
+const useScrollBlock = () => {
+  const scrollBlocked = useRef();
+  const safeDocument = typeof document !== 'undefined' ? document : {};
+  const html = safeDocument.documentElement;
+  const { body } = safeDocument;
+
+  const blockScroll = () => {
+    if (!body || !body.style || scrollBlocked.current) return;
+
+    const scrollBarWidth = window.innerWidth - html.clientWidth;
+    const bodyPaddingRight = parseInt(window.getComputedStyle(body).getPropertyValue("padding-right")) || 0;
+
+    html.style.position = 'relative';
+    html.style.overflow = 'hidden';
+    body.style.position = 'relative';
+    body.style.overflow = 'hidden';
+    body.style.paddingRight = `${bodyPaddingRight + scrollBarWidth}px`;
+
+    scrollBlocked.current = true;
+  };
+
+  const allowScroll = () => {
+    if (!body || !body.style || !scrollBlocked.current) return;
+
+    html.style.position = '';
+    html.style.overflow = '';
+    body.style.position = '';
+    body.style.overflow = '';
+    body.style.paddingRight = '';
+
+    scrollBlocked.current = false;
+  };
+
+  return [blockScroll, allowScroll];
+};
+
 const header = () => {
     const pathname= useLocation();
     const contentRef = useRef(null);
@@ -16,20 +52,28 @@ const header = () => {
     const parentref = useRef(null);
     const [opennav, closenav] = useState(false);
     const [scrolled, setScrolled] = useState(true);
+    const [blockScroll, allowScroll] = useScrollBlock();
     const togglenav = () => {
+
+    
+
       if (opennav){
         closenav(false);
         setScrolled(false);
+        allowScroll();
         // enablePageScroll();
         
       }else{
         closenav(true);
+        setAction(false)
+        blockScroll();
         // disablePageScroll();
       }
     }
     const handleclick = () =>{
       if(!opennav)return;
       closenav(false);
+      allowScroll();
       // enablePageScroll();
       if(enservicio){
         setAction(false);
