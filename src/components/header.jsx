@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import setecalogo from "../myassets/setecalogo.png";
 import {brainwave} from "../assets";
 import {navigation} from "../constants";
@@ -17,17 +18,23 @@ const header = () => {
     const [scrolled, setScrolled] = useState(true);
     const togglenav = () => {
       if (opennav){
-        closenav(false)
-        setScrolled(false)
+        closenav(false);
+        setScrolled(false);
+        enablePageScroll()
+        
       }else{
-        closenav(true)
+        closenav(true);
+        disablePageScroll();
       }
     }
     const handleclick = () =>{
-      closenav(false)
+      if(!opennav)return;
+      closenav(false);
+      enablePageScroll();
       if(enservicio){
-        setAction(false)
+        setAction(false);
       }
+
     }
     const althandleclick = () =>{
       if(enservicio){
@@ -105,7 +112,9 @@ const header = () => {
       </a>
       <nav  className={navsetup}>
         <div className={navitems}>
+        
           {navigation.map((item)=> (
+            
             <div className="w-full md:w-auto">
               <a key={item.id} href={item.url} onClick={handleclick} className={` relative text-2xl px-6 py-6 md:py-1 md:text-sm text-s-9 
               md:h-[2.6rem] md:flex  items-center justify-center 
@@ -145,6 +154,7 @@ const header = () => {
           ))}</div> ) : null}</div>
           </div>
           ))}
+          <div className="min-h-[6.65rem] md:hidden"></div>
         </div>
       </nav>
       <a href="#signup" className={` hidden button text-s-5 md:block mr-8
