@@ -20,17 +20,17 @@ const header = () => {
       if (opennav){
         closenav(false);
         setScrolled(false);
-        enablePageScroll()
+        // enablePageScroll();
         
       }else{
         closenav(true);
-        disablePageScroll();
+        // disablePageScroll();
       }
     }
     const handleclick = () =>{
       if(!opennav)return;
       closenav(false);
-      enablePageScroll();
+      // enablePageScroll();
       if(enservicio){
         setAction(false);
       }
@@ -127,7 +127,7 @@ const header = () => {
                 onMouseLeave={handleMouseLeave}>
               {item.title}
             </a> 
-            <div className={`transition-all md:transition-none ${enservicio ? `border-l-[8px] border-s-11 md:border-none` : "" }`}>
+            <div className={`transition-all  ${opennav ? `duration-250` : "duration-0" } md:transition-none ${enservicio ? `border-l-[8px] border-s-11 md:border-none` : "" }`}>
             <button key={item.id}  onClick={althandleclick} className={`md:hidden relative text-2xl px-6 py-6 md:py-1 md:text-sm
              ${enservicio ? `text-s-11` : "text-s-9" } md:text-s-9
               md:h-[2.6rem]   items-center justify-center 
@@ -142,7 +142,7 @@ const header = () => {
               {item.title}
             </button>
             {item.title === "Servicios" ? (
-              <div ref={contentRef} className={`transition-all duration-250 ${enservicio ? `block md:block ` : "  invisible" } md:fixed md:shadow-lg md:bg-sky-50 overflow-hidden`}
+              <div ref={contentRef} className={`transition-all duration-100 ${enservicio ? `block md:block ` : "  invisible" } md:fixed md:shadow-lg md:bg-sky-50 overflow-hidden`}
               >
                 {servicios.map((item)=>(
                   <a key={item.id} href={item.url} onClick={handleclick} className={`block relative md:hover:bg-s-3 text-2xl px-11 py-6 md:py-0 md:px-6 md:text-sm text-s-9 
