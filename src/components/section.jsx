@@ -4,11 +4,15 @@ const section = ({
     className,
     id,
     children,
-    custonPaddings
+    custonPaddings,
+    maxw
 }) => {
 
   return (
-    <div className={`relative ${custonPaddings|| "py-10 md:py-16 px-5 md:px-14  " } ${className}`}>{children}</div>
+    <div className={`relative ${maxw|| "max-w-[90rem]" } ${custonPaddings|| "py-10 md:py-16 px-5 md:px-14  " } 
+    ${className}`}>
+        {children}
+    </div>
   )
 }
 
