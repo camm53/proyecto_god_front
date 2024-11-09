@@ -32,7 +32,7 @@ const hometop = () => {
           
           <div className=" flex flex-wrap items-center justify-center min-w-[100wh] aspect-[5/5.9] md:aspect-[5/3.15]  h-auto  bg-s-6">
             <img  src={"https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTZ8fHxlbnwwfHx8fHw%3D"}  
-            className={`min-h-full min-w-full object-cover brightness-50 `} alt="seteca"/>
+            className={`min-h-full  object-cover brightness-50 `} alt="seteca"/>
             <div className="absolute inset-0 bg-black/20"></div>
           </div>
         
