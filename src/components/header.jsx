@@ -137,7 +137,7 @@ const header = () => {
     const classes=`bg-transparent fixed top-0 left-0 w-full z-50  
     ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent shadow-[inset_0_12rem_4rem_-5rem_rgba(0,0,0,0.4)] md:shadow-[inset_0_13rem_4rem_-5rem_rgba(0,0,0,0.4)] pb-[6rem] "
       :"border-b border-s-6 shadow-md"}`;
-    const banner=`transition-colors duration-125 flex items-center px-5 lg:px-7.5 xl:px-10 py-8 w-screen ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent":"bg-s-1"} ` ;
+    const banner=`transition-colors duration-125 flex items-center px-5 md:px-14  py-8 w-screen ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent":"bg-s-1"} ` ;
     const navsetup=` ${opennav ? "flex md:border-none h-[100%] transition-all duration-150" :  `invisible h-15` } fixed top-[6.65rem] left-0 bottom-0 right-0 bg-s-1 
     md:static md:flex md:mx-auto text-s-9 md:bg-transparent md:visible ` ;
     // md:bg-transparent
