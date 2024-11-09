@@ -8,7 +8,7 @@ const hometop = () => {
     <div className=' relative bg-s-3'>
         <div className='absolute inset-0 z-2 flex justify-center '>
             <Section className={"flex w-full h-full items-center justify-center"} 
-            custonPaddings={"py-[6rem] md:py-[7rem] pb-[1rem] md:pb-14 px-[1rem] md:px-14 "}>
+            custonPaddings={"py-[6rem] md:py-[7rem] pb-[1.2rem] md:pb-14 px-[1.2rem] md:px-[1rem] md:mx-14 "}>
                 <div className='flex flex-col  flex-1 h-full  items-start justify-end'>
                     
                     <div className='w-[85%] md:w-[31rem]  space-y-4 '>
@@ -16,10 +16,10 @@ const hometop = () => {
                             este es un titulo
                         </div>
                         <div className='text-xs md:text-base md:leading-loose'>
-                        este es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un titulo
+                        este es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un titulo
                         </div>
                         <Button className="w-fit md:flex " href="#login">
-                            botonnn
+                            botonn
                         </Button>
                     </div>
                    
