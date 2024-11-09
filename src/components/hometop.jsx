@@ -19,7 +19,7 @@ const hometop = () => {
                         este es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un titulo
                         </div>
                         <Button className="w-fit md:flex " href="#login">
-                            boton
+                            botonn
                         </Button>
                     </div>
                    
