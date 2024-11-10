@@ -362,3 +362,38 @@ export const servicios = [
   },
   
 ];
+
+export const slides = [
+  {
+    imageUrl: 'https://images.pexels.com/photos/708440/pexels-photo-708440.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450',
+    title: 'Lorem ipsum dolor',
+    role: 'Web Designer',
+    description: 'Lorem ipsum dolor sit amet consectetur.sum dolor sit amet consectetur.sum dolor sit amet consectetur.sum dolor sit amet consectetur.sum dolor sit amet consectetur.sum dolor sit amet consectetur.sum dolor sit amet consectetur.',
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450',
+    title: 'Lorem ipsum dolor',
+    role: 'Web Designer',
+    description: '',
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/445109/pexels-photo-445109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450',
+    title: 'Lorem ipsum dolor',
+    role: 'Web Designer',
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/8422523/pexels-photo-8422523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450',
+    title: 'Lorem ipsum dolor',
+    role: 'Web Designer',
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/445109/pexels-photo-445109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450',
+    title: 'Lorem ipsum dolor',
+    role: 'Web Designer',
+  },
+  {
+    imageUrl: 'https://images.pexels.com/photos/39866/entrepreneur-startup-start-up-man-39866.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=450',
+    title: 'Lorem ipsum dolor',
+    role: 'Web Designer',
+  },
+];

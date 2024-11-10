@@ -3,6 +3,8 @@ import ButtonGradient from "./assets/svg/ButtonGradient";
 import Header from "./components/header";
 import setecalogo from "./myassets/setecalogo.png";
 import Hometop from "./components/hometop";
+import Homeservicios from "./components/homeservicios";
+
 
 const App = ()=> {
   return (
@@ -10,6 +12,8 @@ const App = ()=> {
       <div className=" " >
         <Header className="pt-[4.75rem] lg:pt-[5.25rem]"/>
         <Hometop/>
+        <Homeservicios/>
+        
       </div>
       
       <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden bg-s-5" >
