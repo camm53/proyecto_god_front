@@ -8,7 +8,7 @@ const homeservicios = () => {
         <Section className={"w-full flex flex-col md:flex-row justify-center  flex-wrap "}
         custonPaddings={"py-[3rem]  px-[1.2rem] md:px-0 md:mx-14"}>
             <div className='w-full'>
-                <div className='mb-4'>nuestros servicios</div>
+                <div className='mb-6 font-serif text-2xl text-s-9/70'>Nuestros servicios</div>
                 <div className='w-full flex items-center justify-evenly space-y-4 md:space-y-0 md:space-x-4  flex-col md:flex-row '>
                  <Tests/>  
                     
@@ -17,6 +17,7 @@ const homeservicios = () => {
             
             
         </Section>
+        
     </div>
   )
 }
