@@ -7,7 +7,7 @@ import ContactCard from './Contactcard';
 
 const hometop = () => {
   return (
-    <div className=' relative bg-s-3'>
+    <div className=' relative bg-s-3 top-0'>
         <div className='absolute inset-0 z-2 flex justify-center '>
             <Section className={"flex w-full h-full items-center justify-center"} 
             custonPaddings={"py-[6rem] md:py-[7rem] pb-[1.2rem] md:pb-14 px-[1.2rem] md:px-0 md:mx-14 "}>
