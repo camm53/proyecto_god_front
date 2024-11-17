@@ -2,7 +2,8 @@ import React from 'react'
 import Section from './section'
 import homeimage from "../myassets/setecalogo.png";
 import Button from "./button";
-import { useToggle } from './Contactcard';
+import ContactCard from './Contactcard';
+
 
 const hometop = () => {
   return (
@@ -19,9 +20,11 @@ const hometop = () => {
                         <div className='text-xs md:text-base md:leading-loose'>
                          es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un titulo
                         </div>
-                        <Button className="w-fit md:flex " href="#login">
+                        
+                        <Button className="w-fit md:flex " onClick={() => ContactCard.toggle?.()}>
                             botonn
                         </Button>
+                       
                         
                         
                         

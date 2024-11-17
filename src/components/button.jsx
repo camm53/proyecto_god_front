@@ -1,7 +1,6 @@
 import ButtonSvg from "../assets/svg/ButtonSvg";
 
-
-const Button = ({ className, href, onClick, children, px, white }) => {
+const Button = ({ className, href, onClick, children, px, white, contacto }) => {
 
   const classes = `button relative inline-flex items-center justify-center h-11 
   bg-black border-2 border-solid border-s-3 transition-colors hover:text-color-4 
@@ -13,7 +12,7 @@ const Button = ({ className, href, onClick, children, px, white }) => {
     <button className={classes} onClick={onClick}>
       <span>{children}</span>
       {/* {ButtonSvg(white)} */}
- 
+      {contacto ? contactcard() : ""}
     </button>
   );
 

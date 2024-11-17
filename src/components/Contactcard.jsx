@@ -1,19 +1,32 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 
-import { createContext, useContext, useState } from 'react';
-
-const ToggleContext = createContext();
-
-export const Contactcard = ({ children }) => {
-    const [isContactCardVisible, setIsContactCardVisible] = useState(false);
-    
-    const toggleContactCard = () => setIsContactCardVisible(prev => !prev);
+export default function ContactCard() {
+  const [isVisible, setIsVisible] = useState(false);
   
-    return (
-      <ToggleContext.Provider value={{ isContactCardVisible, toggleContactCard }}>
-        <div className={`fixed top-0 left-0 w-full bg-s-7 z-2b ${isContactCardVisible?"hidden":""}`}>auuwgbfñaliugbaiuw</div>
-      </ToggleContext.Provider>
-    );
+  // Expose the setter through a static property
+  ContactCard.toggle = () => {
+    setIsVisible(prev => !prev);
   };
 
-  export const useToggle = () => useContext(ToggleContext);
+  // Store the setter for external access
+  useEffect(() => {
+    ContactCard.setIsVisible = setIsVisible;
+    return () => {
+      ContactCard.setIsVisible = null;
+    };
+  }, []);
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="fixed top-0 right-0 mt-4 mr-4 p-6 bg-white rounded-lg shadow-lg z-50">
+      <div className="space-y-4">
+        <h2 className="text-xl font-bold">Contact Information</h2>
+        <div>
+          <p className="text-gray-600">Email: example@email.com</p>
+          <p className="text-gray-600">Phone: (555) 123-4567</p>
+        </div>
+      </div>
+    </div>
+  );
+}
