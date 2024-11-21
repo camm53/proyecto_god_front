@@ -330,37 +330,88 @@ export const socials = [
 export const servicios = [
   {
     id: "0",
-    title: "primero",
-    url: "#primero",
+    title: "Aires Acondicionados",
+    url: "#aires-acondicionados",
+    shortDescription: "Instalación y mantenimiento de sistemas de aire acondicionado.",
+    longDescription:
+      "Servicio especializado en el manejo de sistemas de aire acondicionado, incluyendo instalación y mantenimiento. Diseñado para garantizar comodidad en cualquier espacio, este servicio asegura un ambiente controlado y agradable, adaptándose a las necesidades específicas de cada cliente.",
   },
   {
     id: "1",
-    title: "segundo",
-    url: "#segundo",
+    title: "Mantenimiento de Instalaciones Eléctricas, Sanitarias, Hidráulicas",
+    url: "#mantenimiento-instalaciones",
+    shortDescription: "Cuidado integral de sistemas eléctricos, sanitarios e hidráulicos.",
+    longDescription:
+      "Ofrecemos mantenimiento completo para instalaciones eléctricas, sanitarias e hidráulicas. Este servicio busca prolongar la vida útil de los sistemas, asegurar su funcionamiento óptimo y resolver problemas comunes de forma eficiente y profesional.",
   },
   {
     id: "2",
-    title: "tercero",
-    url: "#tercero",
+    title: "Electricidad Media y Baja Tensión",
+    url: "#electricidad",
+    shortDescription: "Especialistas en sistemas eléctricos de media y baja tensión.",
+    longDescription:
+      "Un servicio dedicado a la instalación y mantenimiento de sistemas eléctricos en media y baja tensión. Perfecto para garantizar la seguridad, funcionalidad y eficiencia de las instalaciones en diversos entornos, adaptándose a los requerimientos específicos del cliente.",
   },
   {
     id: "3",
-    title: "Roadmap",
-    url: "#roadmap",
+    title: "Tablaroca",
+    url: "#tablaroca",
+    shortDescription: "Instalación profesional de sistemas de tablaroca.",
+    longDescription:
+      "Realizamos instalaciones de tablaroca para diversos usos, como divisiones, techos y acabados. Este servicio permite transformar espacios de manera rápida y eficiente, logrando resultados visualmente atractivos y funcionales.",
   },
   {
     id: "4",
+    title: "Paneles Solares y Energías Renovables",
+    url: "#paneles-solares",
+    shortDescription: "Soluciones sostenibles en energías renovables.",
+    longDescription:
+      "Brindamos servicios relacionados con paneles solares y energías renovables. Este servicio está orientado a promover el uso de tecnologías limpias y sostenibles, contribuyendo al ahorro energético y al cuidado del medio ambiente.",
+  },
+  {
+    id: "5",
+    title: "Construcción",
+    url: "#construccion",
+    shortDescription: "Proyectos de construcción desde la planeación hasta la ejecución.",
+    longDescription:
+      "Ofrecemos servicios de construcción para proyectos de cualquier escala. Desde los primeros pasos de diseño hasta la entrega final, trabajamos para materializar ideas en estructuras funcionales, duraderas y de calidad.",
+  },
+  {
+    id: "6",
+    title: "Arquitectura",
+    url: "#arquitectura",
+    shortDescription: "Diseños arquitectónicos funcionales y estéticos.",
+    longDescription:
+      "Servicio de arquitectura enfocado en crear diseños que combinen estética y funcionalidad. Trabajamos en proyectos personalizados que se adaptan a las necesidades y gustos de cada cliente, con atención especial a los detalles.",
+  },
+  {
+    id: "7",
+    title: "Impermeabilizado",
+    url: "#impermeabilizado",
+    shortDescription: "Protección contra filtraciones en techos y estructuras.",
+    longDescription:
+      "Ofrecemos soluciones de impermeabilización para proteger estructuras contra la humedad y filtraciones. Este servicio asegura la durabilidad de las construcciones y mejora su resistencia a las condiciones climáticas.",
+  },
+  {
+    id: "8",
+    title: "Pintura",
+    url: "#pintura",
+    shortDescription: "Acabados de pintura de alta calidad para interiores y exteriores.",
+    longDescription:
+      "Servicio de pintura enfocado en proporcionar acabados duraderos y de alta calidad. Ideal para renovar espacios interiores y exteriores, con una variedad de opciones que se adaptan a diferentes estilos y preferencias.",
+  },
+  {
+    id: "9",
     title: "New account",
     url: "#signup",
     onlyMobile: true,
   },
   {
-    id: "5",
+    id: "10",
     title: "Sign in",
     url: "#login",
     onlyMobile: true,
   },
-  
 ];
 
 export const slides = [

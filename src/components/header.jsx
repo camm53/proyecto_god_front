@@ -136,9 +136,9 @@ const header = () => {
     const handleMouseLeave = () => { window.innerWidth >= 768 ? setAction(false): undefined};
 
     const classes=`bg-transparent fixed top-0 left-0 w-full z-40  
-    ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent shadow-[inset_0_12rem_4rem_-5rem_rgba(0,0,0,0.4)] md:shadow-[inset_0_13rem_4rem_-5rem_rgba(0,0,0,0.4)] pb-[6rem] "
+    ${pathname.pathname==="/" && !opennav && scrolled? "bg-transparent shadow-[inset_0_12rem_4rem_-5rem_rgba(0,0,0,0.4)] md:shadow-[inset_0_13rem_4rem_-5rem_rgba(0,0,0,0.4)] pb-[6rem] "
       :"border-b border-s-6 shadow-md"}`;
-    const banner=` transition-colors duration-125 flex items-center justify-center  px-5 md:px-14  py-8 w-screen  ${pathname.hash==="#home" && !opennav && scrolled? "bg-transparent":"bg-s-1"} ` ;
+    const banner=` transition-colors duration-125 flex items-center justify-center  px-5 md:px-14  py-8 w-screen  ${pathname.pathname==="/" && !opennav && scrolled? "bg-transparent":"bg-s-1"} ` ;
     const navsetup=` ${opennav ? "flex md:border-none h-[100%] transition-all duration-150" :  `invisible h-15` } fixed top-[6.65rem] left-0 bottom-0 right-0 bg-s-1 
     md:static md:flex md:mx-auto text-s-9 md:bg-transparent md:visible ` ;
     // md:bg-transparent
@@ -151,11 +151,12 @@ const header = () => {
     <div className={classes}>
       <div  className={banner}>
         <div className="flex w-full justify-center items-center  max-w-[90rem]">
-      <a onClick={handleclick} className="flex  items-center  w-[8.5rem] min-w-[8.5rem] xl-mr-8 md:w-[10rem] " href="#home">
-        <img  src={`${pathname.hash==="#home" && !opennav && scrolled? setecalogoblanco : setecalogo}`} width={160} height={40} className={`w-full h-auto object-contain 
+      <a onClick={handleclick} className="flex  items-center  w-[8.5rem] min-w-[8.5rem] xl-mr-8 md:w-[10rem] " href="/">
+        <img  src={`${pathname.pathname==="/" && !opennav && scrolled? setecalogoblanco : setecalogo}`} width={160} height={40} className={`w-full h-auto object-contain 
           drop-shadow-[0_0_.05rem_rgba(255,255,255,1)]`} alt="seteca"/>
         
       </a>
+      
       <nav  className={navsetup}>
         <div className={navitems}>
         
@@ -167,7 +168,7 @@ const header = () => {
               ${item.onlyMobile  ? 'md:hidden' :"" }
               ${item.title ==="Servicios"  ? 'hidden' :"block" }
               ${item.url === pathname.hash ? 'z-2 md:text-s-7 ':
-                pathname.hash==="#home" && scrolled? "md:text-s-1/100 hover:md:text-s-1/80 hover:md:border-s-1 hover:md:border-b hover:md:boder-solid" : 
+                pathname.pathname==="/" && scrolled? "md:text-s-1/100 hover:md:text-s-1/80 hover:md:border-s-1 hover:md:border-b hover:md:boder-solid" : 
                 "hover:md:text-s-5 hover:md:border-b hover:md:boder-solid hover:md:border-s-10" }`}
                 onMouseEnter={item.title==="Servicios"?handleMouseEnter:null} 
                 onMouseLeave={handleMouseLeave}>
@@ -180,7 +181,7 @@ const header = () => {
               ${item.onlyMobile  ? 'md:hidden' :"" }
               ${item.title ==="Servicios"  ? 'block' :"hidden" }
               ${item.url === pathname.hash ? 'z-2 md:text-s-7 ':
-                pathname.hash==="#home" ? "md:text-s-1/100 hover:md:text-s-1/80 hover:md:border-s-1 hover:md:border-b hover:md:boder-solid" : 
+                pathname.pathname==="/" ? "md:text-s-1/100 hover:md:text-s-1/80 hover:md:border-s-1 hover:md:border-b hover:md:boder-solid" : 
                 "hover:md:text-s-5 hover:md:border-b hover:md:boder-solid hover:md:border-s-10" }`}
                 // onMouseEnter={item.title==="Servicios"?handleMouseEnter:null} 
                 // onMouseLeave={handleMouseLeave}
@@ -204,7 +205,7 @@ const header = () => {
         </div>
       </nav>
       <a href="#signup" className={` hidden button text-s-5 md:block mr-8
-              ${pathname.hash==="#home" && scrolled? "md:text-s-1" : "" }`}>
+              ${pathname.pathname==="/" && scrolled? "md:text-s-1" : "" }`}>
         Crear cuenta
       </a>
       <Button className="hidden md:flex " href="#login">

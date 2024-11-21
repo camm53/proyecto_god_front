@@ -1,8 +1,8 @@
 import React from "react";
 
-const Footer1 = () => {
+const Footer1 = ({className}) => {
     return (
-        <div className="mx-auto container py-16 xl:px-20 lg:px-12 sm:px-6 px-4">
+        <div className={`mx-auto container py-16 xl:px-20 lg:px-12 sm:px-6 px-4 ${className || ''}`}>
             <div className=" grid grid-cols-[auto_auto] space-y-7 md:space-y-0 md:grid-cols-[auto_auto_auto] md:gap-[6rem] gap-4 md:justify-self-center">
                 <div className="col-span-full md:col-span-1 flex flex-col flex-shrink-0  w-auto  ">
                     <div>

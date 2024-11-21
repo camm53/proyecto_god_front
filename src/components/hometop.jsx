@@ -7,10 +7,10 @@ import ContactCard from './Contactcard';
 
 const hometop = () => {
   return (
-    <div className=' relative bg-s-3 top-0'>
+    <div className=' relative bg-s-3 top-0 '>
         <div className='absolute inset-0 z-2 flex justify-center '>
             <Section className={"flex w-full h-full items-center justify-center"} 
-            custonPaddings={"py-[6rem] md:py-[7rem] pb-[1.2rem] md:pb-14 px-[1.2rem] md:px-0 md:mx-14 "}>
+            custonPaddings={"py-[6rem] md:py-[7rem] pb-[1.7rem] md:pb-14 px-[1.5rem] md:px-2 md:mx-14 "}>
                 <div className='flex flex-col  flex-1 h-full  items-start justify-end'>
                     
                     <div className='w-[85%] md:w-[31rem]  space-y-4 '>
@@ -21,8 +21,9 @@ const hometop = () => {
                          es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un tituloeste es un titulo
                         </div>
                         
-                        <Button className="w-fit md:flex " onClick={() => ContactCard.toggle?.()}>
-                            botonn
+                        <Button className="w-fit md:flex text-s-1  border-s-1 p-0 bg-transparent hover:bg-s-10 hover:border-s-10 duration-75 " 
+                        onClick={() => ContactCard.toggle?.()} px={"px-5"}>
+                            Contactanos
                         </Button>
                        
                         
