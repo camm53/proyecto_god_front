@@ -10,7 +10,9 @@ const router = createBrowserRouter([
   {path:"/", element:<App/>},
   {path:"servicios", element:<Servicios/>},
   {path:"*", element:<Navigate to="/#home" />}
-])
+]
+
+)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
