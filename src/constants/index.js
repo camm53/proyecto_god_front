@@ -293,21 +293,21 @@ export const benefits = [
 export const socials = [
   {
     id: "0",
-    title: "Discord",
+    title: "tel",
     iconUrl: discordBlack,
-    url: "#",
+    url: "9841672057",
   },
   {
     id: "1",
     title: "Twitter",
     iconUrl: twitter,
-    url: "#",
+    url: "https://twitter.com/yourhandle",
   },
   {
     id: "2",
     title: "Instagram",
     iconUrl: instagram,
-    url: "#",
+    url: "https://instagram.com/yourhandle", 
   },
   {
     id: "3",
@@ -319,9 +319,16 @@ export const socials = [
     id: "4",
     title: "Facebook",
     iconUrl: facebook,
-    url: "#",
+    url: "https://facebook.com/yourpage",
+  },
+  {
+    id: "5",
+    title: "YouTube",
+    
+    url: "https://youtube.com/channel/yourchannelid",
   },
 ];
+
 
 export const servicios = [
   {

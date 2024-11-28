@@ -17,7 +17,7 @@ const hometop = () => {
                     
                     <div className='w-[85%] md:w-[31rem]  space-y-4 '>
                         <div className=' text-4xl md:text-[4.8rem] py-2 md:py-2 md:leading-[6rem]'>
-                        Servicios de Calidad
+                        Servicios de Confianza
                         </div>
                         <div className='text-xs md:text-base md:leading-loose'>
                         En SETECA ofrecemos soluciones eficientes en mantenimiento, reparaciones y construcción, garantizando calidad y confianza en cada proyecto.

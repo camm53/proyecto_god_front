@@ -32,12 +32,12 @@ const topservicios = () => {
       if (service) {
         setSelectedService(service);
       } else {
-        navigate("/servicios?id=1", { replace: true });
+        navigate("/", { replace: true });
         window.scrollTo({ top: 0, left: 0, behavior: "instant" });
       }
     } else {
       // Redirect to the default service if no ID is provided
-      navigate("/servicios?id=1", { replace: true });
+      navigate("/", { replace: true });
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     }
   }, [searchParams, navigate]);
