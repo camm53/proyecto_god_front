@@ -69,17 +69,7 @@ export default function ContactCard() {
             <span className="text-lg">{sociales.map(social => (
       <FormattedPhoneNumber  number={social.numero} />
     ))}</span>
-    {copied ? (
-        <div className="absolute inset-0 bg-green-100 text-green-700 flex items-center justify-center rounded-md">
-          <Check size={20} className="mr-2" />
-          <span>Copied!</span>
-        </div>
-      ) : (
-        <Copy 
-          size={16} 
-          className="text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity" 
-        />
-      )}
+    
           </div>
 
           <div className="pt-4">
