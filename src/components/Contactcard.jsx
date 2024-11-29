@@ -75,7 +75,7 @@ export default function ContactCard() {
           <div className="pt-4">
             <p className="text-sm">o puedes agendar en linea por medio de</p>
             <a
-              href="#"
+              href="/"
               className="text-sm text-blue-400 hover:text-blue-300 underline"
             >
               este enlace
