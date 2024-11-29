@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { X, Phone } from 'lucide-react'; 
+import { X, Phone, Copy, Check } from 'lucide-react'; 
 import { socials } from '../constants';
 import { parsePhoneNumberWithError } from 'libphonenumber-js'
 
@@ -17,15 +17,7 @@ export default function ContactCard() {
     }
   }
 
-  const handleCopy = (number) => {
-    // Remove any formatting when copying
-    const cleanNumber = number.replace(/\D/g, '');
-    
-    navigator.clipboard.writeText(cleanNumber).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
+
 
   // Expose the setter through a static property
   ContactCard.toggle = () => {
@@ -75,8 +67,19 @@ export default function ContactCard() {
           <div className="flex items-center justify-center space-x-2">
             <Phone size={20} />
             <span className="text-lg">{sociales.map(social => (
-      <FormattedPhoneNumber onClick={handleCopy(social.numero)} number={social.numero} />
+      <FormattedPhoneNumber  number={social.numero} />
     ))}</span>
+    {copied ? (
+        <div className="absolute inset-0 bg-green-100 text-green-700 flex items-center justify-center rounded-md">
+          <Check size={20} className="mr-2" />
+          <span>Copied!</span>
+        </div>
+      ) : (
+        <Copy 
+          size={16} 
+          className="text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity" 
+        />
+      )}
           </div>
 
           <div className="pt-4">
