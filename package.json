@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "front": "file:",
+    "libphonenumber-js": "^1.11.15",
     "lucide-react": "^0.460.0",
     "pure-react-carousel": "^1.32.0",
     "react": "^18.3.1",

@@ -1,9 +1,20 @@
 import { useState, useEffect } from 'react';
-import { X, Phone } from 'lucide-react';
+import { X, Phone } from 'lucide-react'; 
+import { socials } from '../constants';
+import { parsePhoneNumberWithError } from 'libphonenumber-js'
 
 export default function ContactCard() {
   const [isVisible, setIsVisible] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
+
+  const FormattedPhoneNumber = ({ number }) => {
+    try {
+      const phoneNumber = parsePhoneNumberWithError(number, 'MX')
+      return phoneNumber.formatNational()
+    } catch (error) {
+      return number // fallback if parsing fails
+    }
+  }
 
   // Expose the setter through a static property
   ContactCard.toggle = () => {
@@ -25,6 +36,7 @@ export default function ContactCard() {
   }, []);
 
   if (!isRendered) return null;
+  const sociales = socials.filter(social => social.title==="tel")
 
   return (
     <div
@@ -51,7 +63,7 @@ export default function ContactCard() {
 
           <div className="flex items-center justify-center space-x-2">
             <Phone size={20} />
-            <span className="text-lg">984-1112-222</span>
+            <span className="text-lg">{sociales.map(social=>{<FormattedPhoneNumber number={social.numero} />})}</span>
           </div>
 
           <div className="pt-4">

@@ -190,11 +190,12 @@ const header = () => {
                 >
               {item.title}
             </button>
-            {item.title === "Servicios" ? (
+            
+            {item.title === "Servicios" ? ( //aqui es el menu desplegable
               <div ref={contentRef} className={`transition-all duration-100 ${enservicio ? `block md:block ` : "  invisible" } md:fixed md:shadow-lg md:bg-sky-50 overflow-hidden`}
               >
                 {servicios.map((item)=>(
-                  <a key={item.id}  onClick={() => handleNavigation(item.id)} className={`block relative md:hover:bg-s-3 text-2xl px-11 py-6 md:py-0 md:px-6 md:text-sm text-s-9 
+                  <a key={item.id}  onClick={() =>{opennav? togglenav():""; handleNavigation(item.id)}} className={`block relative md:hover:bg-s-3 text-2xl px-11 py-6 md:py-0 md:px-6 md:text-sm text-s-9 
                   md:h-[2.6rem] md:flex  items-center ${item.onlyMobile  ? 'md:hidden' :"" }`}
                   onMouseEnter={handleMouseEnter} 
                   onMouseLeave={handleMouseLeave}>

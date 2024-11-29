@@ -5,10 +5,12 @@ import {servicios} from "../constants";
 import ContactCard from './Contactcard';
 import Button from "./button";
 import { CircleChevronRight } from 'lucide-react';
+import { useServiceNavigation } from "./useServiceNavigation";
 
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
 export default function Index() {
+    const { handleNavigation } = useServiceNavigation();
     const imagenn="https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTZ8fHxlbnwwfHx8fHw%3D";
     const displayServices = servicios.filter(service => !service.onlyMobile);
     return (
@@ -43,7 +45,7 @@ export default function Index() {
         
     </h3>
     <Button className="w-fit md:flex  text-xl lg:text-2xl font-semibold  p-0 bg-transparent border-none m-0 text-color-2 duration-75   " 
-                         px={"px-0"} serviceId={displayServices.id} boton={" "}>
+                         px={"px-0"} onClick={() => handleNavigation(displayServices.id)} boton={" "}>
                             <div  className={`font-grotesk text-xl flex  items-center justify-center space-x-1 `}> <p className={''}>VER</p> <CircleChevronRight size={18} strokeWidth={2.3} /></div>   
                         </Button>
 </div>
@@ -92,17 +94,20 @@ export default function Index() {
             whitespace-normal overflow-hidden line-clamp-2 group-hover:line-clamp-none"
         style={{ overflowWrap: "break-word", wordBreak: "break-word" }}
     >
-        {displayServices.title}
+        {displayServices.title} 
         
     </h3>
-    <Button className="w-fit md:flex  text-xl lg:text-2xl font-semibold  p-0 bg-transparent border-none m-0 text-color-2 duration-75  " 
-                         px={"px-0"} serviceId={displayServices.id} boton={" "}>
-                            <p  >Ver</p>   
+    <Button className="w-fit md:flex  text-xl lg:text-2xl font-semibold  p-0 bg-transparent border-none m-0 text-color-2 duration-75   " 
+                         px={"px-0"} onClick={() => handleNavigation(displayServices.id)} boton={" "}>
+                            <div  className={`font-grotesk text-xl flex  items-center justify-center space-x-1 `}> <p className={''}>VER</p> <CircleChevronRight size={18} strokeWidth={2.3} /></div>   
                         </Button>
 </div>
 
+
                                             </div>
+                                            
                                         </div>
+                                        
                                     </Slide>
                                     ))}
                                 </div>
@@ -141,17 +146,20 @@ export default function Index() {
             whitespace-normal overflow-hidden line-clamp-2 group-hover:line-clamp-none"
         style={{ overflowWrap: "break-word", wordBreak: "break-word" }}
     >
-        {displayServices.title}
+        {displayServices.title} 
         
     </h3>
-    <Button className="w-fit md:flex  text-xl lg:text-2xl font-semibold  p-0 bg-transparent border-none m-0 text-color-2 duration-75  " 
-                         px={"px-0"} serviceId={displayServices.id} boton={" "}>
-                            <p  >Ver</p>   
+    <Button className="w-fit md:flex  text-xl lg:text-2xl font-semibold  p-0 bg-transparent border-none m-0 text-color-2 duration-75   " 
+                         px={"px-0"} onClick={() => handleNavigation(displayServices.id)} boton={" "}>
+                            <div  className={`font-grotesk text-xl flex  items-center justify-center space-x-1 `}> <p className={''}>VER</p> <CircleChevronRight size={18} strokeWidth={2.3} /></div>   
                         </Button>
 </div>
 
+
                                             </div>
+                                            
                                         </div>
+                                        
                                     </Slide>
                                     ))}
                                 </div>
