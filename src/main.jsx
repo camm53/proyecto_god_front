@@ -8,8 +8,9 @@ import { createBrowserRouter, RouterProvider,Navigate } from 'react-router-dom';
 
 const router = createBrowserRouter([
   {path:"/", element:<App/>},
+  {path:"/home", element:<App/>},
   {path:"servicios", element:<Servicios/>},
-  {path:"*", element:<Navigate to="/#home" />}
+  {path:"*", element:<Navigate to="/" />}
 ]
 
 )

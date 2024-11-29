@@ -4,7 +4,7 @@ import { socials } from '../constants';
 import { parsePhoneNumberWithError } from 'libphonenumber-js'
 
 export default function ContactCard() {
-  const [copied, setCopied] = useState(false);
+
   const [isVisible, setIsVisible] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
 
