@@ -296,7 +296,7 @@ export const socials = [
     title: "tel",
     iconUrl: discordBlack,
     url: "9841672057",
-    numero: "9841672057",
+    numero: "9841445909",
   },
   {
     id: "1",

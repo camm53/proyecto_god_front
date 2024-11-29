@@ -4,17 +4,28 @@ import { socials } from '../constants';
 import { parsePhoneNumberWithError } from 'libphonenumber-js'
 
 export default function ContactCard() {
+  const [copied, setCopied] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
 
   const FormattedPhoneNumber = ({ number }) => {
     try {
-      const phoneNumber = parsePhoneNumberWithError(number, 'MX')
+      const phoneNumber = parsePhoneNumberWithError(number, 'US')
       return phoneNumber.formatNational()
     } catch (error) {
       return number // fallback if parsing fails
     }
   }
+
+  const handleCopy = (number) => {
+    // Remove any formatting when copying
+    const cleanNumber = number.replace(/\D/g, '');
+    
+    navigator.clipboard.writeText(cleanNumber).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
 
   // Expose the setter through a static property
   ContactCard.toggle = () => {
@@ -63,7 +74,9 @@ export default function ContactCard() {
 
           <div className="flex items-center justify-center space-x-2">
             <Phone size={20} />
-            <span className="text-lg">{sociales.map(social=>{<FormattedPhoneNumber number={social.numero} />})}</span>
+            <span className="text-lg">{sociales.map(social => (
+      <FormattedPhoneNumber onClick={handleCopy(social.numero)} number={social.numero} />
+    ))}</span>
           </div>
 
           <div className="pt-4">
