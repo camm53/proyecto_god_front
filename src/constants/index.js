@@ -316,17 +316,17 @@ export const socials = [
     url: "9841672057",
     numero: "9841672057",
   },
-  {
-    id: "1",
-    title: "Twitter",
-    iconUrl: twitter,
-    url: "https://twitter.com/yourhandle",
-  },
+  // {
+  //   id: "1",
+  //   title: "Twitter",
+  //   iconUrl: twitter,
+  //   url: "https://twitter.com/yourhandle",
+  // },
   {
     id: "2",
     title: "Instagram",
     iconUrl: instagram,
-    url: "https://instagram.com/yourhandle", 
+    url: "https://www.instagram.com/setecapdc", 
   },
   {
     id: "3",
@@ -338,14 +338,14 @@ export const socials = [
     id: "4",
     title: "Facebook",
     iconUrl: facebook,
-    url: "https://facebook.com/yourpage",
+    url: "https://www.facebook.com/setecaplaya/",
   },
-  {
-    id: "5",
-    title: "YouTube",
+  // {
+  //   id: "5",
+  //   title: "YouTube",
     
-    url: "https://youtube.com/channel/yourchannelid",
-  },
+  //   url: "https://youtube.com/channel/yourchannelid",
+  // },
 ];
 
 
@@ -359,7 +359,7 @@ export const servicios = [
       "Servicio especializado en el manejo de sistemas de aire acondicionado, incluyendo instalación y mantenimiento. Diseñado para garantizar comodidad en cualquier espacio, este servicio asegura un ambiente controlado y agradable, adaptándose a las necesidades específicas de cada cliente.",
     imagen:"https://images.pexels.com/photos/5463576/pexels-photo-5463576.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
     imagenhorizontal:"https://images.pexels.com/photos/5463581/pexels-photo-5463581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    imagenes:[],
+    imagenes:[aires1,aires2,aires3],
   },
   {
     id: "1",
@@ -370,7 +370,7 @@ export const servicios = [
       "Ofrecemos mantenimiento completo para instalaciones eléctricas, sanitarias e hidráulicas. Este servicio busca prolongar la vida útil de los sistemas, asegurar su funcionamiento óptimo y resolver problemas comunes de forma eficiente y profesional.",
       imagen:"https://images.pexels.com/photos/9679179/pexels-photo-9679179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       imagenhorizontal:"https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      imagenes:[],
+      imagenes:[electricidad1],
   },
   {
     id: "2",
@@ -381,7 +381,7 @@ export const servicios = [
       "Un servicio dedicado a la instalación y mantenimiento de sistemas eléctricos en media y baja tensión. Perfecto para garantizar la seguridad, funcionalidad y eficiencia de las instalaciones en diversos entornos, adaptándose a los requerimientos específicos del cliente.",
       imagen:"https://images.pexels.com/photos/5691642/pexels-photo-5691642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       imagenhorizontal:"https://images.pexels.com/photos/10130754/pexels-photo-10130754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      imagenes:[],
+      imagenes:[electricidad1,sistema_vigilancia1],
 
   },
   {
@@ -393,7 +393,7 @@ export const servicios = [
       "Realizamos instalaciones de tablaroca para diversos usos, como divisiones, techos y acabados. Este servicio permite transformar espacios de manera rápida y eficiente, logrando resultados visualmente atractivos y funcionales.",
       imagen:"https://cursoscecati.info/wp-content/uploads/2023/08/%C2%BFPor-que-elegir-un-curso-de-Tablaroca-CECATI.jpg",
       imagenhorizontal:"https://uniblock.com.mx/wp-content/uploads/2024/05/Tablaroca-Uniblock-Basecoat-Uniblock-1-1-1024x704.jpg",
-      imagenes:[],
+      imagenes:[tablaroca1],
 
     },
   {
@@ -417,7 +417,7 @@ export const servicios = [
       "Ofrecemos servicios de construcción para proyectos de cualquier escala. Desde los primeros pasos de diseño hasta la entrega final, trabajamos para materializar ideas en estructuras funcionales, duraderas y de calidad.",
       imagen:"https://images.pexels.com/photos/6474494/pexels-photo-6474494.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       imagenhorizontal:"https://images.pexels.com/photos/9964624/pexels-photo-9964624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      imagenes:[],
+      imagenes:[aluminio1,herreria1,sistema_vigilancia1],
 
     },
   {
@@ -429,7 +429,7 @@ export const servicios = [
       "Servicio de arquitectura enfocado en crear diseños que combinen estética y funcionalidad. Trabajamos en proyectos personalizados que se adaptan a las necesidades y gustos de cada cliente, con atención especial a los detalles.",
       imagen:"https://images.pexels.com/photos/7641867/pexels-photo-7641867.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load",
       imagenhorizontal:"https://images.pexels.com/photos/7641859/pexels-photo-7641859.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      imagenes:[],
+      imagenes:[arquitectura1,arquitectura2],
 
     },
   {
@@ -453,7 +453,7 @@ export const servicios = [
       "Servicio de pintura enfocado en proporcionar acabados duraderos y de alta calidad. Ideal para renovar espacios interiores y exteriores, con una variedad de opciones que se adaptan a diferentes estilos y preferencias.",
       imagen:"https://images.pexels.com/photos/5799018/pexels-photo-5799018.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       imagenhorizontal:"https://images.pexels.com/photos/2293819/pexels-photo-2293819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      imagenes:[],
+      imagenes:[pintura1],
 
     },
   {

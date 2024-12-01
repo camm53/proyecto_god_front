@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { X, Phone, Copy, Check } from 'lucide-react'; 
 import { socials } from '../constants';
 import { parsePhoneNumberWithError } from 'libphonenumber-js'
+import { watssqr } from '../myassets/imagenes_seteca_servicios';
 
 export default function ContactCard() {
 
@@ -61,25 +62,26 @@ export default function ContactCard() {
         </button>
 
         {/* Content */}
-        <div className="space-y-6 text-center">
-          <h2 className="text-xl font-semibold">Agenda un servicio al numero:</h2>
+        <div className="space-y-6 text-center m-2">
+          <h2 className="text-xl font-semibold ">Agenda un servicio al numero:</h2>
 
           <div className="flex items-center justify-center space-x-2">
-            <Phone size={20} />
+            <Phone  size={20} />
             <span className="text-lg">{sociales.map(social => (
-      <FormattedPhoneNumber  number={social.numero} />
+      <FormattedPhoneNumber   number={social.numero} />
     ))}</span>
     
           </div>
 
-          <div className="pt-4">
-            <p className="text-sm">o puedes agendar en linea por medio de</p>
-            <a
+          <div className=" space-y-6 flex flex-col items-center justify-center">
+            <p className="text-sm">O escaneando nuestro codigo QR: </p>
+            {/* <a
               href="/"
               className="text-sm text-blue-400 hover:text-blue-300 underline"
             >
               este enlace
-            </a>
+            </a> */}
+            <img src={watssqr} className='w-[80%]' alt="qr" />
           </div>
         </div>
       </div>

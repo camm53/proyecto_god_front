@@ -78,30 +78,41 @@ const topservicios = () => {
         
     </div>
     
-    {/* <div className={`${selectedService.imagenes == [] ? "hidden": "" } relative  md:bg-s-3 top-0 bg-cover bg-center`} >
-    
-        <div className=' inset-0 z-2 flex justify-center md:bg-s-1 '>
-            <div className='absolute bg-s-4 max-w-[40rem] w-[80%] md:w-[40%] h-[2rem] md:h-[3rem] -inset-y-4 z-2 shadow-lg brightness-90 rounded-md' >
-            </div>
-            <div className='absolute bg-s-4 w-[60%] max-w-[30rem] md:w-[30%] h-[2rem] md:h-[3rem] inset-y-1 z-1 shadow-lg brightness-90 rounded-md' ></div>
-            <Section className={"flex w-full h-full  justify-center bg-s-1"} 
+    <div
+  className={`${
+    selectedService?.imagenes?.length === 0 ? "hidden" : ""
+  } relative md:bg-s-3 top-0 bg-cover bg-center`}
+>
+  <div className="inset-0 z-2 flex justify-center md:bg-s-1">
+    <div className="absolute bg-s-4 max-w-[40rem] w-[80%] md:w-[40%] h-[2rem] md:h-[3rem] -inset-y-4 z-2 shadow-lg brightness-90 rounded-md"></div>
+    <div className="absolute bg-s-4 w-[60%] max-w-[30rem] md:w-[30%] h-[2rem] md:h-[3rem] inset-y-1 z-1 shadow-lg brightness-90 rounded-md"></div>
+
+    {/* Render content only if selectedService and selectedService.imagenes exist */}
+    {selectedService?.imagenes && selectedService.imagenes.length > 0 && (
+      <Section
+        className={
+          "flex w-full h-full justify-center bg-s-1"
+        }
+      >
+        <div className="mt-7 flex flex-col flex-wrap md:flex-col flex-1 h-auto items-center justify-center space-y-7">
+          {selectedService.imagenes.map((imagen, index) => (
+            <div
+              key={index}
+              className=" relative h-auto max-w-[80%] md:w-[30rem] text-black bg-s-5"
             >
-                <div className='mt-7 flex flex-row md:flex-row flex-1 h-auto  items-center justify-center  '>
-                  
-                <div className='relative h-auto max-w-[80%] md:w-[30rem] text-black bg-s-5'>
-                  <img  src={`${aires1}`} 
-                  className={`h-full w-full object-cover brightness-90 `} alt="seteca"/>
-                  </div>
-                  
-                </div>
-            </Section>
-            
-            
+              <img
+                src={`${imagen}`}
+                className="h-full w-full object-cover brightness-90"
+                alt="seteca"
+              />
+            </div>
+          ))}
         </div>
-        
-        
-        
-    </div> */}
+      </Section>
+    )}
+  </div>
+</div>
+
     
     </div>
     
