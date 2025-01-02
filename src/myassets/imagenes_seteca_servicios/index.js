@@ -14,6 +14,20 @@ import watssqr from "./qr_watsapp.jpg";
 import sistema_vigilancia1 from "./sistema_vigilancia1.jpg";
 import tablaroca1 from "./tablaroca1.jpg";
 
+import airesvertical from "./airesvertical1.jpg";
+import airesvertical2 from "./airesvertical2.jpg";
+import construccion from "./construccion_1.jpg";
+import daniel from "./daniel1.jpg";
+import electricidadvertical1 from "./electricidadvertical1.jpg";
+import electricidadvertical2 from "./electricidadvertical2.jpg";
+import hidrovertical1 from "./hidraulica1.jpg";
+import hidro from "./hidraulica2.jpg";
+import paneles1 from "./panelessolares_1.jpg";
+import paneles2 from "./panelessolares_2.jpg";
+import hometop1 from "./hometop1.jpg";
+import hometop2 from "./hometop2.jpg";
+
+
 
 export{
     aires1,
@@ -30,4 +44,16 @@ export{
     watssqr,
     sistema_vigilancia1,
     tablaroca1,
+    airesvertical,
+    airesvertical2,
+    construccion,
+    daniel,
+    electricidadvertical1,
+    electricidadvertical2,
+    hidrovertical1,
+    hidro,
+    paneles1,
+    paneles2,
+    hometop1,
+    hometop2,
 }

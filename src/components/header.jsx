@@ -167,7 +167,11 @@ const header = () => {
             <div className="w-full md:w-auto">
               <a key={item.id} href={item.url} onClick={handleclick} className={` relative text-2xl px-6 py-6 md:py-1 md:text-sm text-s-9 
               md:h-[2.6rem] md:flex  items-center justify-center 
-              ${item.onlyMobile  ? 'md:hidden' :"" }
+              ${item.onlyMobile  ? 
+                // 'md:hidden' :"" 
+                'hidden md:hidden' : "" 
+              
+              }
               ${item.title ==="Servicios"  ? 'hidden' :"block" }
               ${item.url === pathname.hash ? 'z-2 md:text-s-7 ':
                 pathname.pathname==="/" && scrolled? "md:text-s-1/100 hover:md:text-s-1/80 hover:md:border-s-1 hover:md:border-b hover:md:boder-solid" : 
@@ -207,13 +211,13 @@ const header = () => {
           <div className="min-h-[6.65rem] md:hidden"></div>
         </div>
       </nav>
-      <a href="#signup" className={` hidden button text-s-5 md:block mr-8
+      {/* <a href="#signup" className={` hidden button text-s-5 md:block mr-8
               ${pathname.pathname==="/" && scrolled? "md:text-s-1" : "" }`}>
         Crear cuenta
       </a>
       <Button className="hidden md:flex " href="#login">
         login
-      </Button>
+      </Button> */}
       <Button className="ml-auto md:hidden p-3" onClick={togglenav} px="px3" >
         <MenuSvg openNavigation={opennav}></MenuSvg>
       </Button>

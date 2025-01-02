@@ -51,6 +51,16 @@ import {
     watssqr,
     sistema_vigilancia1,
     tablaroca1,
+    airesvertical,
+    airesvertical2,
+    construccion,
+    daniel,
+    electricidadvertical1,
+    electricidadvertical2,
+    hidrovertical1,
+    hidro,
+    paneles1,
+    paneles2,
 
  } from "../myassets/imagenes_seteca_servicios";
 
@@ -357,8 +367,8 @@ export const servicios = [
     shortDescription: "Instalación y mantenimiento de sistemas de aire acondicionado.",
     longDescription:
       "Servicio especializado en el manejo de sistemas de aire acondicionado, incluyendo instalación y mantenimiento. Diseñado para garantizar comodidad en cualquier espacio, este servicio asegura un ambiente controlado y agradable, adaptándose a las necesidades específicas de cada cliente.",
-    imagen:"https://images.pexels.com/photos/5463576/pexels-photo-5463576.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
-    imagenhorizontal:"https://images.pexels.com/photos/5463581/pexels-photo-5463581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    imagen: airesvertical2, 
+    imagenhorizontal:airesvertical,
     imagenes:[aires1,aires2,aires3],
   },
   {
@@ -368,7 +378,7 @@ export const servicios = [
     shortDescription: "Cuidado integral de sistemas eléctricos, sanitarios e hidráulicos.",
     longDescription:
       "Ofrecemos mantenimiento completo para instalaciones eléctricas, sanitarias e hidráulicas. Este servicio busca prolongar la vida útil de los sistemas, asegurar su funcionamiento óptimo y resolver problemas comunes de forma eficiente y profesional.",
-      imagen:"https://images.pexels.com/photos/9679179/pexels-photo-9679179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      imagen:hidro,
       imagenhorizontal:"https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       imagenes:[electricidad1],
   },
@@ -379,7 +389,7 @@ export const servicios = [
     shortDescription: "Especialistas en sistemas eléctricos de media y baja tensión.",
     longDescription:
       "Un servicio dedicado a la instalación y mantenimiento de sistemas eléctricos en media y baja tensión. Perfecto para garantizar la seguridad, funcionalidad y eficiencia de las instalaciones en diversos entornos, adaptándose a los requerimientos específicos del cliente.",
-      imagen:"https://images.pexels.com/photos/5691642/pexels-photo-5691642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      imagen:electricidadvertical1,
       imagenhorizontal:"https://images.pexels.com/photos/10130754/pexels-photo-10130754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       imagenes:[electricidad1,sistema_vigilancia1],
 
@@ -403,7 +413,7 @@ export const servicios = [
     shortDescription: "Soluciones sostenibles en energías renovables.",
     longDescription:
       "Brindamos servicios relacionados con paneles solares y energías renovables. Este servicio está orientado a promover el uso de tecnologías limpias y sostenibles, contribuyendo al ahorro energético y al cuidado del medio ambiente.",
-      imagen:"https://images.pexels.com/photos/9875410/pexels-photo-9875410.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      imagen:paneles1,
       imagenhorizontal:"https://images.pexels.com/photos/8853539/pexels-photo-8853539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       imagenes:[],
 
