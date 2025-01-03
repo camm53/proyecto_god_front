@@ -51,7 +51,7 @@ const Footer1 = ({className}) => {
                 <div className="">
                     <h2 className="text-base font-semibold leading-4 text-gray-800">Support</h2>
                     <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">(984) 167-2057</p>
-                    <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">danielrejon.seteca@gmail.com</p>
+                    <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">seteca00@hotmail.com </p>
                     {/* <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">Status policy</p>
                     <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">Privacy policy</p>
                     <p className="hover:text-gray-500 text-base leading-4 mt-6 text-gray-800 cursor-pointer">Terms of service</p> */}
