@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { X, Phone, Copy, Check } from 'lucide-react'; 
 import { socials } from '../constants';
 import { parsePhoneNumberWithError } from 'libphonenumber-js'
-import { watssqr } from '../myassets/imagenes_seteca_servicios';
+import  watssqr  from "../myassets/International_Pokémon_logo.svg.png";
 
 export default function ContactCard() {
 

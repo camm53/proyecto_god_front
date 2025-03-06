@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
-import setecalogo from "../myassets/setecalogo.png";
-import setecalogoblanco from "../myassets/SETECA_ALLWHITE.png";
+import pokemonlogo from "../myassets/International_Pokémon_logo.svg.png";
+import pokemonlogo2 from "../myassets/International_Pokémon_logo.svg.png";
 import {brainwave} from "../assets";
 import {navigation} from "../constants";
 import {servicios} from "../constants";
@@ -154,8 +154,8 @@ const header = () => {
       <div  className={banner}>
         <div className="flex w-full justify-center items-center  max-w-[90rem]">
       <a onClick={handleclick} className="flex  items-center  w-[8.5rem] min-w-[8.5rem] xl-mr-8 md:w-[10rem] " href="/">
-        <img  src={`${pathname.pathname==="/" && !opennav && scrolled? setecalogoblanco : setecalogo}`} width={160} height={40} className={`w-full h-auto object-contain 
-          drop-shadow-[0_0_.05rem_rgba(255,255,255,1)]`} alt="seteca"/>
+        <img  src={`${pathname.pathname==="/" && !opennav && scrolled? pokemonlogo2 : pokemonlogo}`} width={160} height={40} className={`w-full h-auto object-contain 
+          drop-shadow-[0_0_.05rem_rgba(255,255,255,1)]`} alt=""/>
         
       </a>
       

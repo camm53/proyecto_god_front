@@ -1,10 +1,10 @@
 import React from 'react'
 import Section from './section'
-import homeimage from "../myassets/setecalogo.png";
+
 import Button from "./button";
 import ContactCard from './Contactcard';
 import { useNavigate } from 'react-router-dom';
-import { hometop1,hometop2 } from '../myassets/imagenes_seteca_servicios';
+import { hometop1,hometop2 } from '../myassets/imagenes_servicios';
 
 
 const hometop = () => {
@@ -21,7 +21,7 @@ const hometop = () => {
                         Servicios de Confianza
                         </div>
                         <div className='text-xs md:text-base md:leading-loose'>
-                        En SETECA ofrecemos soluciones eficientes en mantenimiento, reparaciones y construcción, garantizando calidad y confianza en cada proyecto.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc
                         </div>
                         
                         <Button className="w-fit md:flex text-s-1  border-white  p-0 bg-transparent hover:bg-s-10 hover:border-s-10 duration-75 " 
@@ -43,8 +43,8 @@ const hometop = () => {
         
           
           <div className=" flex flex-wrap items-center justify-center min-w-[100wh] aspect-[5/6.5] md:aspect-[5/3.15]  h-auto  bg-s-6">
-            <img  src={hometop2}  
-            className={`h-full w-full object-cover brightness-50 `} alt="seteca"/>
+            <img  src={"https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTZ8fHxlbnwwfHx8fHw%3D"}  
+            className={`h-full w-full object-cover brightness-50 `} alt=""/>
             <div className="absolute inset-0 bg-black/20"></div>
           </div>
         

@@ -62,7 +62,7 @@ import {
     paneles1,
     paneles2,
 
- } from "../myassets/imagenes_seteca_servicios";
+ } from "../myassets/imagenes_servicios";
 
 export const navigation = [
   {
@@ -323,8 +323,8 @@ export const socials = [
     id: "0",
     title: "tel",
     iconUrl: discordBlack,
-    url: "9841672057",
-    numero: "9841672057",
+    url: "999999999",
+    numero: "999999999",
   },
   // {
   //   id: "1",
@@ -336,7 +336,7 @@ export const socials = [
     id: "2",
     title: "Instagram",
     iconUrl: instagram,
-    url: "https://www.instagram.com/setecapdc", 
+    url: "https://www.instagram.com", 
   },
   {
     id: "3",
@@ -348,7 +348,7 @@ export const socials = [
     id: "4",
     title: "Facebook",
     iconUrl: facebook,
-    url: "https://www.facebook.com/setecaplaya/",
+    url: "https://www.facebook.com",
   },
   // {
   //   id: "5",
