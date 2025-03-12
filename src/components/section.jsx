@@ -9,9 +9,11 @@ const section = ({
 }) => {
 
   return (
+    <div className='flex justify-center'>
     <div className={`relative ${maxw|| "max-w-[90rem]" } ${custonPaddings|| "py-10 md:py-16 px-5 md:px-14  " } 
     ${className}`}>
         {children}
+    </div>
     </div>
   )
 }
