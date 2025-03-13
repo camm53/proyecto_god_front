@@ -7,6 +7,7 @@ import Button from "./button";
 import { CircleChevronRight } from 'lucide-react';
 import { useServiceNavigation } from "./useServiceNavigation";
 
+
 /* Install pure-react-carousel using -> npm i pure-react-carousel */
 
 export default function Index() {
