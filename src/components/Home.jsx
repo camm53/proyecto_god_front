@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from "./button";
 import Header from "./header";
 import Hometop from "./hometop";
+import AdSection from "./adsection";
 import Homeservicios from "./homeservicios";
 import Footer from "./footer";
 import ContactCard from './Contactcard';
@@ -9,11 +9,15 @@ import ContactCard from './Contactcard';
 function Home() {
   return (
     <div>
-      <ContactCard/>
-      <Header className="pt-[4.75rem] lg:pt-[5.25rem]" />
-      <Hometop />
-      <Homeservicios />
-      <Footer />
+      <Header />
+      {/* Contenedor principal con padding-top para dejar espacio al header fijo */}
+      <div className="pt-[8rem]">
+        <ContactCard />
+        <AdSection />
+        <Hometop />
+        <Homeservicios />
+        <Footer />
+      </div>
     </div>
   );
 }
