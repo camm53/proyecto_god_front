@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import ProductPage from './components/productpage';
 import Login from './components/Login';  // Asegúrate de que la ruta del archivo sea correcta
 
+
 // Configuración de rutas
 const router = createBrowserRouter([
   {
