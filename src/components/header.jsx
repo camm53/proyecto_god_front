@@ -35,7 +35,7 @@ const Header = () => {
 
           {/* User & Cart */}
           <div className="flex items-center gap-6">
-            <a href="/login" className="text-gray-700 hover:text-blue-600">
+            <a href="/Auth" className="text-gray-700 hover:text-blue-600">
               <FaUser size={24} />
             </a>
             <a href="/cart" className="relative text-gray-700 hover:text-blue-600">

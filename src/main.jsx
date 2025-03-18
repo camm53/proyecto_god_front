@@ -5,9 +5,10 @@ import './index.css';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import ProductPage from './components/productpage';
 import Login from './components/Login';  // Asegúrate de que la ruta del archivo sea correcta
+import AuthView from './components/AuthView';
 
 
-// Configuración de rutas
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,8 +19,8 @@ const router = createBrowserRouter([
     element: <ProductPage />
   },
   {
-    path: "/login",  // Nueva ruta para el login
-    element: <Login />
+    path: "/auth",
+    element: <AuthView />
   },
   {
     path: "*",
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
   }
 ]);
 
+// Renderizado de la aplicación
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />

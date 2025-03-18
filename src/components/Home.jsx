@@ -11,7 +11,7 @@ function Home() {
     <div>
       <Header />
       {/* Contenedor principal con padding-top para dejar espacio al header fijo */}
-      <div className="pt-[8rem]">
+      <div className="">
         <ContactCard />
         <AdSection />
         <Hometop />
