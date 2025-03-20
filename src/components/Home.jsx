@@ -10,8 +10,8 @@ function Home() {
   return (
     <div>
       <Header />
-      {/* Contenedor principal con padding-top para dejar espacio al header fijo */}
-      <div className="">
+      {/* Contenedor principal; agrega padding-top si es necesario para evitar superposición con el header fijo */}
+      <div className="pt-4">
         <ContactCard />
         <AdSection />
         <Hometop />

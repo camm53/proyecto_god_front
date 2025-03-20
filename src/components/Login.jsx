@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "/api";
 
-const Login = ({ onLogin }) => {
-  // Podemos manejar el submit del formulario
-  const handleSubmit = (event) => {
+const Login = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Lógica de validación o autenticación...
-    onLogin(); // Llamamos la función que redirige al Home
+    setError(""); // Limpiar errores previos
+    try {
+      const response = await api.post("/authenticate", { email, password });
+      console.log("Respuesta de login:", response.data);
+
+      // Verificar que se reciba el token
+      if (!response.data.token) {
+        setError("Token no recibido. Revisa la respuesta del servidor.");
+        return;
+      }
+
+      localStorage.setItem("token", response.data.token);
+
+      const userRole = response.data.role; // Se espera que el backend envíe el rol
+      if (userRole === "ADMIN") {
+        navigate("/admin");
+      } else if (userRole === "VENDEDOR") {
+        navigate("/vendedor");
+      } else {
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      console.error("Error en el login:", err);
+      setError("Credenciales inválidas");
+    }
   };
 
   return (
     <div className="flex-1 p-8 flex flex-col justify-center">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Iniciar sesión</h2>
+
+      {error && <p className="text-red-500 mb-4">{error}</p>}
 
       <form onSubmit={handleSubmit}>
         {/* Campo de Correo */}
@@ -24,6 +55,8 @@ const Login = ({ onLogin }) => {
           <input
             type="email"
             id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
             placeholder="tucorreo@ejemplo.com"
           />
@@ -40,6 +73,8 @@ const Login = ({ onLogin }) => {
           <input
             type="password"
             id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
             placeholder="••••••••"
           />

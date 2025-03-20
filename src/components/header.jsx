@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
+import LogoutButton from "./LogoutButton"; // Ajusta la ruta según tu proyecto
 
 const Header = () => {
   const headerRef = useRef(null);
@@ -14,7 +15,10 @@ const Header = () => {
   return (
     <>
       {/* Header */}
-      <header ref={headerRef} className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+      <header
+        ref={headerRef}
+        className="bg-white shadow-md fixed top-0 left-0 w-full z-50"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
           {/* Logo */}
           <a href="/" className="text-xl font-bold text-blue-600">
@@ -33,9 +37,9 @@ const Header = () => {
             </button>
           </div>
 
-          {/* User & Cart */}
+          {/* User, Cart y Logout */}
           <div className="flex items-center gap-6">
-            <a href="/Auth" className="text-gray-700 hover:text-blue-600">
+            <a href="/Login" className="text-gray-700 hover:text-blue-600">
               <FaUser size={24} />
             </a>
             <a href="/cart" className="relative text-gray-700 hover:text-blue-600">
@@ -44,6 +48,7 @@ const Header = () => {
                 2
               </span>
             </a>
+            <LogoutButton />
           </div>
         </div>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import ProductCard from "./ProductCard";
 
 const RelatedProducts = ({ relatedItems }) => {
   return (
@@ -7,9 +8,7 @@ const RelatedProducts = ({ relatedItems }) => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {relatedItems.map((item) => (
           <div key={item.id} className="border p-4 rounded-md">
-            <img src={item.image} alt={item.name} className="w-full h-32 object-cover rounded" />
-            <p className="text-gray-700 mt-2">{item.name}</p>
-            <p className="text-blue-600 font-bold">${item.price}</p>
+            <ProductCard {...item} />
           </div>
         ))}
       </div>

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.8.4",
     "front": "file:",
     "libphonenumber-js": "^1.11.15",
     "lucide-react": "^0.460.0",

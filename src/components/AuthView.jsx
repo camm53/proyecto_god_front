@@ -17,17 +17,17 @@ const AuthView = () => {
   };
 
   const handleLogin = () => {
-    // Lógica de autenticación aquí. Si es exitosa, redirige a Home:
+    // Aquí iría tu lógica de autenticación. Si es exitosa, redirige a Home
     navigate("/");
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      {/* Header con altura dinámica */}
+      {/* Header fijo */}
       <Header className="sticky top-0 z-10" />
 
-      {/* Contenedor flexible que ocupa el espacio restante */}
-      <div className="flex-grow flex items-center justify-center">
+      {/* Contenedor principal posicionado en la parte superior */}
+      <div className="flex-grow flex flex-col items-center justify-start mt-4">
         <div className="bg-white w-full max-w-6xl rounded-xl shadow-lg flex overflow-hidden mt-4">
           {/* Columna Izquierda: Login */}
           <div
