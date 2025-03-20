@@ -5,6 +5,8 @@ import AdSection from "./adsection";
 import Homeservicios from "./homeservicios";
 import Footer from "./footer";
 import ContactCard from './Contactcard';
+import api from '/api';
+
 
 function Home() {
   return (
