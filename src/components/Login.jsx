@@ -4,33 +4,31 @@ import api from "/api";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState(""); // Usamos username en lugar de email
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError(""); // Limpiar errores previos
+
     try {
-      const response = await api.post("/authenticate", { email, password });
+      // Enviamos el objeto JSON con username y password
+      const response = await api.post("/authenticate", { username, password });
       console.log("Respuesta de login:", response.data);
 
-      // Verificar que se reciba el token
-      if (!response.data.token) {
+      // Se espera que el backend devuelva un token (como string)
+      const token = response.data;
+      if (!token) {
         setError("Token no recibido. Revisa la respuesta del servidor.");
         return;
       }
 
-      localStorage.setItem("token", response.data.token);
+      // Guardamos el token en localStorage
+      localStorage.setItem("token", token);
 
-      const userRole = response.data.role; // Se espera que el backend envíe el rol
-      if (userRole === "ADMIN") {
-        navigate("/admin");
-      } else if (userRole === "VENDEDOR") {
-        navigate("/vendedor");
-      } else {
-        navigate("/dashboard");
-      }
+      // Redirigimos al usuario (por ejemplo, a la página principal)
+      navigate("/");
     } catch (err) {
       console.error("Error en el login:", err);
       setError("Credenciales inválidas");
@@ -44,21 +42,21 @@ const Login = () => {
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
       <form onSubmit={handleSubmit}>
-        {/* Campo de Correo */}
+        {/* Campo de Nombre de Usuario */}
         <div className="mb-4">
           <label
-            htmlFor="email"
+            htmlFor="username"
             className="block text-sm font-semibold text-gray-600 mb-2"
           >
-            Correo electrónico
+            Nombre de usuario
           </label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
-            placeholder="tucorreo@ejemplo.com"
+            placeholder="tuUsuario"
           />
         </div>
 
@@ -96,7 +94,7 @@ const Login = () => {
         <hr className="flex-grow border-gray-300" />
       </div>
 
-      {/* Botones de Login Social */}
+      {/* Botones de Login Social (opcional) */}
       <div className="flex gap-4 justify-center">
         <button className="flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors">
           <span className="font-medium text-gray-600">Google</span>
