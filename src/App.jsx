@@ -4,6 +4,7 @@ import AuthView from './components/AuthView';       // Vista de login/register
 import Home from './components/Home';               // Página pública (Home)
 import ProductPage from './components/ProductPage'; // Detalle del producto
 import ProtectedRoute from './components/ProtectedRoute'; // Rutas protegidas
+import Pedidos from './components/pedidos';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       {/* Rutas públicas */}
       <Route path="/" element={<Home />} />
       <Route path="/product/:id" element={<ProductPage />} />
+      <Route path="/orders" element={<Pedidos />} />
 
       {/* Ejemplo de rutas protegidas (no afecta a ProductPage) */}
       <Route element={<ProtectedRoute />}>
