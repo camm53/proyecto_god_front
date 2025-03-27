@@ -4,34 +4,55 @@ import api from "/api";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState(""); // Usamos username en lugar de email
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError(""); // Limpiar errores previos
+    setError("");
 
     try {
-      // Enviamos el objeto JSON con username y password
-      const response = await api.post("/authenticate", { username, password });
-      console.log("Respuesta de login:", response.data);
+      // 1. Autenticación
+      const authResponse = await api.post("/authenticate", { username, password });
+      const token = authResponse.data;
 
-      // Se espera que el backend devuelva un token (como string)
-      const token = response.data;
       if (!token) {
         setError("Token no recibido. Revisa la respuesta del servidor.");
         return;
       }
 
-      // Guardamos el token en localStorage
+      // Guardar el token inmediatamente
       localStorage.setItem("token", token);
 
-      // Redirigimos al usuario (por ejemplo, a la página principal)
-      navigate("/");
+      // 2. Obtener información del usuario
+      try {
+        // Asumiendo que tu backend tiene un endpoint para obtener info del usuario por nombre
+        const userResponse = await api.get(`/usuarios/username/${username}`);
+        const userData = userResponse.data;
+
+        // Guardar toda la información del usuario en localStorage
+        localStorage.setItem("user", JSON.stringify({
+          id: userData.id,
+          nombre: userData.nombre || username, // Usa el nombre o el username como fallback
+          email: userData.email,
+          // otros campos que necesites
+        }));
+
+        // Redirigir al home
+        navigate("/");
+      } catch (userError) {
+        console.error("Error obteniendo datos del usuario:", userError);
+        // Si falla pero tenemos token, guardamos al menos el username
+        localStorage.setItem("user", JSON.stringify({
+          nombre: username
+        }));
+        navigate("/");
+      }
+
     } catch (err) {
       console.error("Error en el login:", err);
-      setError("Credenciales inválidas");
+      setError(err.response?.data?.message || "Credenciales inválidas");
     }
   };
 
@@ -42,7 +63,6 @@ const Login = () => {
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
       <form onSubmit={handleSubmit}>
-        {/* Campo de Nombre de Usuario */}
         <div className="mb-4">
           <label
             htmlFor="username"
@@ -57,10 +77,10 @@ const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
             placeholder="tuUsuario"
+            required
           />
         </div>
 
-        {/* Campo de Contraseña */}
         <div className="mb-6">
           <label
             htmlFor="password"
@@ -75,10 +95,10 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
             placeholder="••••••••"
+            required
           />
         </div>
 
-        {/* Botón de Iniciar Sesión */}
         <button
           type="submit"
           className="w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600 transition-colors"
@@ -87,14 +107,12 @@ const Login = () => {
         </button>
       </form>
 
-      {/* Separador con "o" */}
       <div className="flex items-center my-6">
         <hr className="flex-grow border-gray-300" />
         <span className="mx-2 text-gray-400">o</span>
         <hr className="flex-grow border-gray-300" />
       </div>
 
-      {/* Botones de Login Social (opcional) */}
       <div className="flex gap-4 justify-center">
         <button className="flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors">
           <span className="font-medium text-gray-600">Google</span>
