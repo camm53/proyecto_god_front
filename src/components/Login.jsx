@@ -4,7 +4,7 @@ import api from "/api";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState(""); // Se utiliza email en lugar de username
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -13,43 +13,39 @@ const Login = () => {
     setError("");
 
     try {
-      // 1. Autenticación
-      const authResponse = await api.post("/authenticate", { username, password });
-      const token = authResponse.data;
+      // 1. Autenticación: se envía el email como username (según lo que espera el backend)
+      const authResponse = await api.post("/authenticate", { username: email, password });
+      console.log("Respuesta de login:", authResponse.data);
 
+      const token = authResponse.data;
       if (!token) {
         setError("Token no recibido. Revisa la respuesta del servidor.");
         return;
       }
-
-      // Guardar el token inmediatamente
       localStorage.setItem("token", token);
 
-      // 2. Obtener información del usuario
+      // 2. Obtener información del usuario por email
       try {
-        // Asumiendo que tu backend tiene un endpoint para obtener info del usuario por nombre
-        const userResponse = await api.get(`/usuarios/username/${username}`);
+        const userResponse = await api.get(`/usuarios/email/${email}`);
         const userData = userResponse.data;
+        console.log("Datos del usuario:", userData);
 
-        // Guardar toda la información del usuario en localStorage
+        // Guardar la información relevante del usuario en localStorage
         localStorage.setItem("user", JSON.stringify({
           id: userData.id,
-          nombre: userData.nombre || username, // Usa el nombre o el username como fallback
+          nombre: userData.nombre || email,
           email: userData.email,
-          // otros campos que necesites
+          // Agrega aquí otros campos que necesites
         }));
 
-        // Redirigir al home
+        // Redirigir al Home
         navigate("/");
       } catch (userError) {
         console.error("Error obteniendo datos del usuario:", userError);
-        // Si falla pero tenemos token, guardamos al menos el username
-        localStorage.setItem("user", JSON.stringify({
-          nombre: username
-        }));
+        // En caso de error, si se tiene token, guardar al menos el email como fallback
+        localStorage.setItem("user", JSON.stringify({ nombre: email }));
         navigate("/");
       }
-
     } catch (err) {
       console.error("Error en el login:", err);
       setError(err.response?.data?.message || "Credenciales inválidas");
@@ -63,24 +59,26 @@ const Login = () => {
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
       <form onSubmit={handleSubmit}>
+        {/* Campo de Correo */}
         <div className="mb-4">
           <label
-            htmlFor="username"
+            htmlFor="email"
             className="block text-sm font-semibold text-gray-600 mb-2"
           >
-            Nombre de usuario
+            Correo electrónico
           </label>
           <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
-            placeholder="tuUsuario"
+            placeholder="tucorreo@ejemplo.com"
             required
           />
         </div>
 
+        {/* Campo de Contraseña */}
         <div className="mb-6">
           <label
             htmlFor="password"
@@ -99,6 +97,7 @@ const Login = () => {
           />
         </div>
 
+        {/* Botón de Iniciar Sesión */}
         <button
           type="submit"
           className="w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600 transition-colors"
@@ -107,12 +106,14 @@ const Login = () => {
         </button>
       </form>
 
+      {/* Separador con "o" */}
       <div className="flex items-center my-6">
         <hr className="flex-grow border-gray-300" />
         <span className="mx-2 text-gray-400">o</span>
         <hr className="flex-grow border-gray-300" />
       </div>
 
+      {/* Botones de Login Social */}
       <div className="flex gap-4 justify-center">
         <button className="flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors">
           <span className="font-medium text-gray-600">Google</span>
