@@ -36,7 +36,7 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
           {/* Logo */}
           <a href="/" className="text-xl font-bold text-blue-600">
-            MyEcommerce
+            BBTech
           </a>
 
           {/* Search Bar */}
@@ -70,7 +70,7 @@ const Header = () => {
                 <span>Bienvenido, identifícate</span>
               </button>
             )}
-            <a href="/cart" className="relative text-gray-700 hover:text-blue-600">
+            <a href="/carrito" className="relative text-gray-700 hover:text-blue-600">
               <FaShoppingCart size={24} />
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                 2
