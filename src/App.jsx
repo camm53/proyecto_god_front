@@ -5,7 +5,8 @@ import Home from './components/Home';
 import ProductPage from './components/ProductPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Pedidos from './components/pedidos';
-import Carrito from './components/carrito'; // 👈 Importación agregada
+import Carrito from './components/carrito';
+import Checkout from './components/checkout'; // ✅ Agregado
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/product/:id" element={<ProductPage />} />
       <Route path="/orders" element={<Pedidos />} />
-      <Route path="/carrito" element={<Carrito />} /> {/* 👈 Ruta agregada */}
+      <Route path="/carrito" element={<Carrito />} />
+      <Route path="/checkout" element={<Checkout />} /> {/* ✅ Nueva ruta */}
 
       <Route element={<ProtectedRoute />}>
         {/* Aquí van tus rutas protegidas */}

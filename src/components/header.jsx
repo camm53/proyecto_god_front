@@ -12,13 +12,11 @@ const Header = () => {
       setHeaderHeight(headerRef.current.offsetHeight);
     }
 
-    // Verificar si el usuario está autenticado
     const token = localStorage.getItem("token");
     if (token) {
-      // Obtener el nombre del usuario
-      const user = JSON.parse(localStorage.getItem("user")); // Asumiendo que guardas un objeto de usuario
+      const user = JSON.parse(localStorage.getItem("user"));
       if (user) {
-        setUserName(user.nombre || user.email.split('@')[0]); // Usa el nombre o la primera parte del email
+        setUserName(user.nombre || user.email.split("@")[0]);
       }
     }
   }, []);
@@ -34,10 +32,18 @@ const Header = () => {
         className="bg-white shadow-md fixed top-0 left-0 w-full z-50"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
-          {/* Logo */}
-          <a href="/" className="text-xl font-bold text-blue-600">
-            BBTech
-          </a>
+          {/* Logo + Favoritos */}
+          <div className="flex items-center gap-4">
+            <a href="/" className="text-xl font-bold text-blue-600">
+              BBTech
+            </a>
+            <a
+              href="/favoritos"
+              className="text-sm text-gray-600 hover:text-blue-600 border border-gray-300 rounded px-3 py-1"
+            >
+              Favoritos
+            </a>
+          </div>
 
           {/* Search Bar */}
           <div className="relative w-full max-w-lg">
@@ -51,8 +57,8 @@ const Header = () => {
             </button>
           </div>
 
-          {/* User, Cart y Logout */}
-          <div className="flex items-center gap-6">
+          {/* Usuario, Logout, Carrito y Pedidos */}
+          <div className="flex items-center gap-4 sm:gap-6">
             {userName ? (
               <>
                 <div className="flex items-center gap-2">
@@ -70,12 +76,24 @@ const Header = () => {
                 <span>Bienvenido, identifícate</span>
               </button>
             )}
-            <a href="/carrito" className="relative text-gray-700 hover:text-blue-600">
+
+            <a
+              href="/orders"
+              className="text-sm text-gray-700 hover:text-blue-600 border border-gray-300 rounded px-3 py-1"
+            >
+              Pedidos
+            </a>
+
+            <a
+              href="/carrito"
+              className="relative text-gray-700 hover:text-blue-600"
+            >
               <FaShoppingCart size={24} />
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                 2
               </span>
             </a>
+
           </div>
         </div>
 
@@ -98,7 +116,7 @@ const Header = () => {
         </nav>
       </header>
 
-      {/* Push content below the header */}
+      {/* Empujar el contenido hacia abajo para evitar solapamiento */}
       <div style={{ paddingTop: `${headerHeight}px` }} />
     </>
   );

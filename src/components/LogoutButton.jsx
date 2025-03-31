@@ -5,7 +5,11 @@ const LogoutButton = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    // Eliminar toda la información de sesión
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    // Redirigir a login
     navigate("/login");
   };
 
