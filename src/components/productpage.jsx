@@ -16,8 +16,21 @@ const ProductPage = () => {
     const fetchProduct = async () => {
       try {
         const response = await api.get(`/productos/${id}`);
-        setProduct(response.data);
+        const productData = response.data;
+        setProduct(productData);
 
+        // Guardar en historial si hay sesión
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user && user.id) {
+          const key = `historial_${user.id}`;
+          let historial = JSON.parse(localStorage.getItem(key)) || [];
+          historial = historial.filter((p) => p.id !== productData.id);
+          historial.unshift(productData);
+          if (historial.length > 10) historial = historial.slice(0, 10);
+          localStorage.setItem(key, JSON.stringify(historial));
+        }
+
+        // Productos relacionados
         const relatedResponse = await api.get("/productos");
         const filtered = relatedResponse.data.filter((p) => p.id !== Number(id));
         setRelatedItems(filtered.slice(0, 4));
