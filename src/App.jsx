@@ -6,6 +6,7 @@ import ProductPage from './components/ProductPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Pedidos from './components/pedidos';
 import Carrito from './components/carrito';
+import Favoritos from './components/Favorites';
 import Checkout from './components/checkout'; // ✅ Agregado
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
       <Route path="/product/:id" element={<ProductPage />} />
       <Route path="/orders" element={<Pedidos />} />
       <Route path="/carrito" element={<Carrito />} />
+      <Route path="/Favoritos" element={<Favoritos  />} />
       <Route path="/checkout" element={<Checkout />} /> {/* ✅ Nueva ruta */}
 
       <Route element={<ProtectedRoute />}>

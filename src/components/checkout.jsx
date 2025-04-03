@@ -58,7 +58,7 @@ const Checkout = () => {
       });
 
       const data = await res.json();
-
+      console.log(data)//checando el error contenido de data <-- error 500 del back "Error al crear la sesión de Stripe"
       if (data.sessionId) {
         const stripe = await getStripe();
         await stripe.redirectToCheckout({ sessionId: data.sessionId });

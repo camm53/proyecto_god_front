@@ -11,6 +11,7 @@ const ProductPage = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [relatedItems, setRelatedItems] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -28,6 +29,9 @@ const ProductPage = () => {
           historial.unshift(productData);
           if (historial.length > 10) historial = historial.slice(0, 10);
           localStorage.setItem(key, JSON.stringify(historial));
+          
+          // Verificar si el producto está en favoritos
+          checkIfFavorite(user.id, productData.id);
         }
 
         // Productos relacionados
@@ -41,6 +45,19 @@ const ProductPage = () => {
 
     fetchProduct();
   }, [id]);
+
+  const checkIfFavorite = async (userId, productId) => {
+    try {
+      const response = await api.get(`/favoritos/usuario/${userId}`);
+      const favorites = response.data;
+      const isInFavorites = favorites.some(fav => fav.producto.id === productId);
+      setIsFavorite(isInFavorites);
+    } catch (error) {
+      // Si hay un error, puede ser porque no hay favoritos (404)
+      console.log("No se encontraron favoritos o hubo un error:", error);
+      setIsFavorite(false);
+    }
+  };
 
   const handleAddToCart = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -60,7 +77,50 @@ const ProductPage = () => {
       alert("Producto agregado al carrito 🎉");
     } catch (error) {
       console.error("Error al agregar al carrito:", error);
+      console.error("Response data:", error.response?.data);
+      console.error("Response status:", error.response?.status);
       alert("Hubo un problema al agregar el producto. Intenta de nuevo.");
+    }
+  };
+
+  const handleToggleFavorite = async () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user || !user.id) {
+      alert("Debes iniciar sesión para agregar productos a favoritos.");
+      return navigate("/login");
+    }
+
+    if (isFavorite) {
+      // Buscar el ID del favorito para eliminarlo
+      try {
+        const response = await api.get(`/favoritos/usuario/${user.id}`);
+        const favorites = response.data;
+        const favoriteToDelete = favorites.find(fav => fav.producto.id === product.id);
+        
+        if (favoriteToDelete) {
+          await api.delete(`/favoritos/${favoriteToDelete.id}`);
+          setIsFavorite(false);
+          alert("Producto eliminado de favoritos");
+        }
+      } catch (error) {
+        console.error("Error al eliminar de favoritos:", error);
+        alert("Hubo un problema al eliminar el producto de favoritos. Intenta de nuevo.");
+      }
+    } else {
+      // Agregar a favoritos
+      const payload = {
+        usuarioId: user.id,
+        productoId: product.id
+      };
+
+      try {
+        await api.post("/favoritos", payload);
+        setIsFavorite(true);
+        alert("Producto agregado a favoritos ❤️");
+      } catch (error) {
+        console.error("Error al agregar a favoritos:", error);
+        alert("Hubo un problema al agregar el producto a favoritos. Intenta de nuevo.");
+      }
     }
   };
 
@@ -102,6 +162,26 @@ const ProductPage = () => {
                   className="border border-green-600 text-green-600 hover:bg-green-50 py-2 px-4 rounded font-medium"
                 >
                   Agregar al carrito
+                </button>
+                <button
+                  onClick={handleToggleFavorite}
+                  className={`flex items-center justify-center py-2 px-4 rounded font-medium ${
+                    isFavorite 
+                      ? "bg-red-100 text-red-600 border border-red-600" 
+                      : "border border-gray-400 text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  {isFavorite ? (
+                    <>
+                      <span className="mr-1">❤️</span>
+                      <span>En favoritos</span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="mr-1">♡</span>
+                      <span>Agregar a favoritos</span>
+                    </>
+                  )}
                 </button>
               </div>
               <div className="mt-4 space-y-1 text-sm text-gray-600">
