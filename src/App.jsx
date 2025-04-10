@@ -6,9 +6,10 @@ import ProductPage from './components/ProductPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import Pedidos from './components/pedidos';
 import Carrito from './components/carrito';
-import Checkout from './components/checkout'; // ✅ Agregado
+import Checkout from './components/checkout';
 import VFav from './components/vistaFav';
-
+import HomeSellerDashboard from './components/HomeSellerDashboard'; // ✅ IMPORTACIÓN
+import NewProductPage from './components/NewProductPage';
 const App = () => {
   return (
     <Routes>
@@ -18,10 +19,15 @@ const App = () => {
       <Route path="/orders" element={<Pedidos />} />
       <Route path="/carrito" element={<Carrito />} />
       <Route path="/Favorites" element={<VFav />} />
-      <Route path="/checkout" element={<Checkout />} /> {/* ✅ Nueva ruta */}
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/newProductPage" element={<NewProductPage />} />
 
+      {/* ✅ RUTA PARA VENDEDORES */}
+      <Route path="/HomeSellerDashboard" element={<HomeSellerDashboard />} />
+
+      {/* Puedes usar ProtectedRoute si deseas proteger algunas rutas */}
       <Route element={<ProtectedRoute />}>
-        {/* Aquí van tus rutas protegidas */}
+        {/* rutas protegidas aquí */}
       </Route>
 
       <Route path="*" element={<Navigate to="/" />} />

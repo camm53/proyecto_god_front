@@ -32,10 +32,10 @@ const Login = () => {
 
         // Guardar la información relevante del usuario en localStorage
         localStorage.setItem("user", JSON.stringify({
-          id: userData.id,
-          nombre: userData.nombre || email,
-          email: userData.email,
-          // Agrega aquí otros campos que necesites
+            id: userData.id,
+            nombre: userData.nombre || email,
+            email: userData.email,
+            rol: userData.rol
         }));
 
         // Redirigir al Home

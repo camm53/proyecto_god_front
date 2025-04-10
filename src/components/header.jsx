@@ -6,6 +6,7 @@ const Header = () => {
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
   const [userName, setUserName] = useState("");
+  const [isSeller, setIsSeller] = useState(false);
 
   useEffect(() => {
     if (headerRef.current) {
@@ -17,6 +18,7 @@ const Header = () => {
       const user = JSON.parse(localStorage.getItem("user"));
       if (user) {
         setUserName(user.nombre || user.email.split("@")[0]);
+        setIsSeller(user.rol === "VENDEDOR"); // Ajusta según tu modelo de roles
       }
     }
   }, []);
@@ -43,6 +45,14 @@ const Header = () => {
             >
               Favoritos
             </a>
+            {isSeller && (
+              <a
+                href="/HomeSellerDashboard"
+                className="text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded"
+              >
+                Dashboard de vendedor
+              </a>
+            )}
           </div>
 
           {/* Search Bar */}
@@ -93,11 +103,10 @@ const Header = () => {
                 2
               </span>
             </a>
-
           </div>
         </div>
 
-        {/* Categories */}
+        {/* Categorías */}
         <nav className="bg-gray-100 py-2">
           <div className="max-w-7xl mx-auto flex justify-center gap-6">
             <a href="/electronics" className="text-gray-700 hover:text-blue-600">
@@ -116,7 +125,7 @@ const Header = () => {
         </nav>
       </header>
 
-      {/* Empujar el contenido hacia abajo para evitar solapamiento */}
+      {/* Espaciado debajo del header */}
       <div style={{ paddingTop: `${headerHeight}px` }} />
     </>
   );
