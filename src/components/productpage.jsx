@@ -77,6 +77,8 @@ const ProductPage = () => {
       alert("Producto agregado al carrito 🎉");
     } catch (error) {
       console.error("Error al agregar al carrito:", error);
+      console.error("Response data:", error.response?.data);
+      console.error("Response status:", error.response?.status);
       alert("Hubo un problema al agregar el producto. Intenta de nuevo.");
     }
   };
