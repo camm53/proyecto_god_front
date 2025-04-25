@@ -72,7 +72,7 @@ const Login = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500 text-white"
             placeholder="tucorreo@ejemplo.com"
             required
           />
@@ -82,7 +82,7 @@ const Login = () => {
         <div className="mb-6">
           <label
             htmlFor="password"
-            className="block text-sm font-semibold text-gray-600 mb-2"
+            className="block text-sm font-semibold text-gray-600 mb-2 "
           >
             Contraseña
           </label>
@@ -91,7 +91,7 @@ const Login = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500 text-white"
             placeholder="••••••••"
             required
           />

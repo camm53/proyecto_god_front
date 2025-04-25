@@ -64,7 +64,7 @@ const Register = () => {
             id="name"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500 text-white"
             placeholder="Tu nombre"
             required
           />
@@ -78,13 +78,13 @@ const Register = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500 text-white"
             placeholder="tucorreo@ejemplo.com"
             required
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="password" className="block text-sm font-semibold text-gray-600 mb-2">
+          <label htmlFor="password" className="block text-sm font-semibold text-gray-600 mb-2 ">
             Contraseña
           </label>
           <input
@@ -92,7 +92,7 @@ const Register = () => {
             id="password"
             value={contrasena}
             onChange={(e) => setContrasena(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500 text-white"
             placeholder="••••••••"
             required
           />
@@ -106,7 +106,7 @@ const Register = () => {
             id="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500 text-white"
             placeholder="••••••••"
             required
           />
@@ -120,7 +120,7 @@ const Register = () => {
             id="telefono"
             value={telefono}
             onChange={(e) => setTelefono(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500 text-white"
             placeholder="+569XXXXXXXX"
           />
         </div>
@@ -133,7 +133,7 @@ const Register = () => {
             id="direccion"
             value={direccion}
             onChange={(e) => setDireccion(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-purple-500 text-white"
             placeholder="Tu dirección"
           />
         </div>
