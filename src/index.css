@@ -30,7 +30,7 @@
 
 @layer base {
   body {
-    @apply font-sans bg-s-2 text-s-1 text-base ;
+     @apply font-sans bg-[#F8F4EC] text-gray-900 text-base ;
   }
 }
 

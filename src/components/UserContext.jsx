@@ -26,8 +26,8 @@ export const UserProvider = ({ children }) => {
     try {
       const response = await api.post("/authenticate", { username, password });
       const token = response.data;
-      
-      // Store token 
+
+      // Store token
       localStorage.setItem("token", token);
 
       return token;
@@ -66,10 +66,10 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ 
-      user, 
-      login, 
-      logout, 
+    <UserContext.Provider value={{
+      user,
+      login,
+      logout,
       isLoading,
       isAuthenticated: !!localStorage.getItem("token")
     }}>

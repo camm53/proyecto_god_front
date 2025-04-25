@@ -10,6 +10,12 @@ import Checkout from './components/checkout';
 import VFav from './components/vistaFav';
 import HomeSellerDashboard from './components/HomeSellerDashboard'; // ✅ IMPORTACIÓN
 import NewProductPage from './components/NewProductPage';
+import MyProductsPage from './components/MyProductsPage';
+import ProductPreviewPage from "./components/ProductPreviewPage";
+import SearchResultsPage from "./components/SearchResultsPage";
+import EditProductPage from "./components/EditProductPage";
+
+
 const App = () => {
   return (
     <Routes>
@@ -21,6 +27,10 @@ const App = () => {
       <Route path="/Favorites" element={<VFav />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/newProductPage" element={<NewProductPage />} />
+      <Route path="/my-products" element={<MyProductsPage />} />
+      <Route path="/vista-previa" element={<ProductPreviewPage />} />
+      <Route path="/buscar" element={<SearchResultsPage />} />
+      <Route path="/editar-producto/:id" element={<EditProductPage />} />
 
       {/* ✅ RUTA PARA VENDEDORES */}
       <Route path="/HomeSellerDashboard" element={<HomeSellerDashboard />} />
