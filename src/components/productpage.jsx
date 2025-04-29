@@ -129,9 +129,9 @@ const ProductPage = () => {
   }
 
   return (
-    <div>
+    <div className="bg-quaternary/30">
       <Header />
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto p-6 ">
         <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-md w-full">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-2/5 p-4 flex items-center justify-center bg-gray-50">

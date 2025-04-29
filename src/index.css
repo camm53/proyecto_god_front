@@ -1,99 +1,96 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-sora: "Sora", sans-serif;
-  --font-code: "Source Code Pro", monospace;
-  --font-grotesk: "Space Grotesk", sans-serif;
-  color-scheme: dark;
+  --font-sora: "Sora", system-ui, -apple-system, sans-serif;
+  --font-code: "Source Code Pro", ui-monospace, monospace;
+  --font-grotesk: "Space Grotesk", "Inter", sans-serif;
+  
+  color-scheme: light dark;
 }
 
-* {
-  scroll-behavior: smooth
-}
-@layer utilities {
-  /* Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-}
-
+/* Enhanced Base Styles */
 @layer base {
   body {
-     @apply font-sans bg-[#F8F4EC] text-gray-900 text-base ;
+    @apply font-sans bg-n-1 text-n-8 antialiased;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    text-rendering: optimizeLegibility;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply text-balance;
+  }
+  
+  p {
+    @apply text-pretty;
+  }
+  
+  /* Improved selection styles */
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+  
+  /* Dark mode transitions */
+  html.dark {
+    @apply transition-colors duration-200;
   }
 }
 
-.rotate-45 {
-  @apply rotate-[45deg]
+/* Extended Utilities */
+@layer utilities {
+  /* Scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.n.4') transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-n-4 rounded-full;
+  }
+  
+  /* Gradients */
+  .text-primary-gradient {
+    @apply bg-gradient-to-r from-primary to-color-5 bg-clip-text text-transparent;
+  }
+  
+  /* Animation */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12%); }
+  }
+  
+  /* Border colors */
+  .border-light {
+    @apply border-n-3 dark:border-n-6;
+  }
 }
 
-.rotate-90 {
-  @apply rotate-[90deg]
-}
+/* Custom Rotations */
+.rotate-45 { @apply rotate-[45deg]; }
+.rotate-90 { @apply rotate-[90deg]; }
+.rotate-135 { @apply rotate-[135deg]; }
+.rotate-180 { @apply rotate-[180deg]; }
+.rotate-225 { @apply rotate-[225deg]; }
+.rotate-270 { @apply rotate-[270deg]; }
+.rotate-315 { @apply rotate-[315deg]; }
+.rotate-360 { @apply rotate-[360deg]; }
 
-.rotate-135 {
-  @apply rotate-[135deg]
-}
-
-.rotate-180 {
-  @apply rotate-[180deg]
-}
-
-.rotate-225 {
-  @apply rotate-[225deg]
-}
-
-.rotate-270 {
-  @apply rotate-[270deg]
-}
-
-.rotate-315 {
-  @apply rotate-[315deg]
-}
-
-.rotate-360 {
-  @apply rotate-[360deg]
-}
-
-.-rotate-45 {
-  @apply rotate-[-45deg]
-}
-
-.-rotate-90 {
-  @apply rotate-[-90deg]
-}
-
-.-rotate-135 {
-  @apply rotate-[-135deg]
-}
-
-.-rotate-180 {
-  @apply rotate-[-180deg]
-}
-
-.-rotate-225 {
-  @apply rotate-[-225deg]
-}
-
-.-rotate-270 {
-  @apply rotate-[-270deg]
-}
-
-.-rotate-315 {
-  @apply rotate-[-315deg]
-}
-
-.-rotate-360 {
-  @apply rotate-[-360deg]
-}
+.-rotate-45 { @apply rotate-[-45deg]; }
+.-rotate-90 { @apply rotate-[-90deg]; }
+.-rotate-135 { @apply rotate-[-135deg]; }
+.-rotate-180 { @apply rotate-[-180deg]; }
+.-rotate-225 { @apply rotate-[-225deg]; }
+.-rotate-270 { @apply rotate-[-270deg]; }
+.-rotate-315 { @apply rotate-[-315deg]; }
+.-rotate-360 { @apply rotate-[-360deg]; }

@@ -75,61 +75,109 @@ const AdSection = () => {
     startAutoSlide();
   };
 
-  const getVisibleAds = () => {
-    const prev = (currentIndex - 1 + ads.length) % ads.length;
-    const next = (currentIndex + 1) % ads.length;
-    return [ads[prev], ads[currentIndex], ads[next]];
-  };
+  const prevIndex = (currentIndex - 1 + ads.length) % ads.length;
+  const nextIndex = (currentIndex + 1) % ads.length;
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto px-4 py-6">
-      <div className="flex items-center justify-between space-x-6 overflow-hidden">
-        {getVisibleAds().map((ad, index) => {
-          const isCurrent = index === 1;
-          const isPrev = index === 0;
-          const isNext = index === 2;
-
-          const handleClick = () => {
-            if (isPrev) handlePrev();
-            else if (isNext) handleNext();
-          };
-
-          return (
-            <div
-              key={ad.id}
-              onClick={handleClick}
-              className={`transition-transform duration-500 rounded-lg flex flex-col items-center cursor-pointer ${
-                isCurrent
-                  ? "w-3/5 scale-105 bg-white shadow-lg p-4"
-                  : "w-1/5 opacity-50 bg-white p-2 translate-y-2 hover:opacity-70"
-              }`}
-            >
+    <div className="relative w-full  mx-auto px-4 py-10 bg-gradient-to-b from-n-2/30 to-transparent bg-tertiary">
+      <div className="flex items-center justify-center gap-4">
+        {/* Previous Ad */}
+        <div 
+          onClick={handlePrev}
+          className="w-52 h-72 rounded-2xl bg-white shadow-lg p-4 cursor-pointer opacity-60 hover:opacity-80 transition-all duration-300 border border-n-3 hover:border-primary/30 group"
+        >
+          <div className="h-full flex flex-col">
+            <div className="relative overflow-hidden rounded-xl h-36 w-full">
               <img
-                src={ad.image}
-                alt={ad.title}
-                className={`w-full ${isCurrent ? "h-48" : "h-32"} object-contain rounded-lg mb-2`}
+                src={ads[prevIndex].image}
+                alt={ads[prevIndex].title}
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
               />
-              <p className={`text-center font-bold ${isCurrent ? "text-lg" : "text-sm"}`}>
-                {ad.title}
-              </p>
-              {isCurrent && (
-                <>
-                  <p className="text-sm text-center text-gray-600">{ad.description}</p>
-                  <div className="w-full h-1 bg-gray-300 mt-2 rounded">
-                    <div
-                      className="h-full bg-blue-500 transition-all"
-                      style={{ width: `${progress}%` }}
-                    />
-                  </div>
-                </>
-              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-n-8/20 to-transparent" />
             </div>
-          );
-        })}
+            <p className="text-center font-grotesk font-medium text-base mt-3 mb-1 text-n-7 group-hover:text-primary">
+              {ads[prevIndex].title}
+            </p>
+          </div>
+        </div>
+
+        {/* Current Ad - Centerpiece */}
+        <div className="w-[24rem] h-[26rem] rounded-3xl bg-white shadow-xl p-6 border border-n-3 relative overflow-hidden">
+          {/* Decorative elements */}
+          <div className="absolute -top-16 -right-16 w-32 h-32 rounded-full bg-primary/10 blur-xl" />
+          <div className="absolute -bottom-8 -left-8 w-24 h-24 rounded-full bg-secondary/10 blur-xl" />
+          
+          <div className="h-full flex flex-col relative z-10">
+            <div className="relative overflow-hidden rounded-2xl h-48 w-full mb-4">
+              <img
+                src={ads[currentIndex].image}
+                alt={ads[currentIndex].title}
+                className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-n-8/30 to-transparent" />
+              <div className="absolute top-3 right-3 bg-primary/90 text-white text-xs font-code font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                Destacado
+              </div>
+            </div>
+            
+            <div className="text-center px-2">
+              <h3 className="font-sora font-semibold text-xl text-n-8 mb-2">
+                {ads[currentIndex].title}
+              </h3>
+              <p className="text-n-5 text-sm leading-relaxed max-w-xs mx-auto">
+                {ads[currentIndex].description}
+              </p>
+            </div>
+            
+            {/* Progress bar */}
+            <div className="mt-auto w-full h-1.5 bg-n-3 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-100 ease-linear"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            
+            {/* Navigation dots */}
+            <div className="flex justify-center mt-3 gap-1.5">
+              {ads.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    stopAutoSlide();
+                    setCurrentIndex(index);
+                    startAutoSlide();
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentIndex ? 'bg-primary w-4' : 'bg-n-4'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Next Ad */}
+        <div 
+          onClick={handleNext}
+          className="w-52 h-72 rounded-2xl bg-white shadow-lg p-4 cursor-pointer opacity-60 hover:opacity-80 transition-all duration-300 border border-n-3 hover:border-primary/30 group"
+        >
+          <div className="h-full flex flex-col">
+            <div className="relative overflow-hidden rounded-xl h-36 w-full">
+              <img
+                src={ads[nextIndex].image}
+                alt={ads[nextIndex].title}
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-n-8/20 to-transparent" />
+            </div>
+            <p className="text-center font-grotesk font-medium text-base mt-3 mb-1 text-n-7 group-hover:text-primary">
+              {ads[nextIndex].title}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
-
-
   );
 };
 

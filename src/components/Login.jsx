@@ -100,7 +100,7 @@ const Login = () => {
         {/* Botón de Iniciar Sesión */}
         <button
           type="submit"
-          className="w-full bg-purple-500 text-white py-2 rounded-md hover:bg-purple-600 transition-colors"
+          className="w-full bg-primary text-white py-2 rounded-md hover:bg-secondary transition-colors"
         >
           Iniciar sesión
         </button>

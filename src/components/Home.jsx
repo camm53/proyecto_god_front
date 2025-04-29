@@ -13,7 +13,7 @@ function Home() {
     <div>
       <Header />
       {/* Contenedor principal; agrega padding-top si es necesario para evitar superposición con el header fijo */}
-      <div className="pt-4">
+      <div className="">
         <ContactCard />
         <AdSection />
         <Hometop />

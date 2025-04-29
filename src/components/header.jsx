@@ -1,21 +1,20 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // <-- usa useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import LogoutButton from "./LogoutButton";
 
 const Header = () => {
   const headerRef = useRef(null);
   const navigate = useNavigate();
+  const header2Ref = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
+  const [header2Height, setHeader2Height] = useState(0);
   const [userName, setUserName] = useState("");
   const [isSeller, setIsSeller] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    if (headerRef.current) {
-      setHeaderHeight(headerRef.current.offsetHeight);
-    }
-
+    // Get user data from localStorage
     const token = localStorage.getItem("token");
     if (token) {
       const user = JSON.parse(localStorage.getItem("user"));
@@ -25,6 +24,22 @@ const Header = () => {
       }
     }
   }, []);
+  
+  // Separate useEffect to measure header heights
+  useEffect(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+    
+    // Small delay to ensure the second header is rendered if user is logged in
+    const timer = setTimeout(() => {
+      if (header2Ref.current) {
+        setHeader2Height(header2Ref.current.offsetHeight);
+      }
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [userName]); // Re-measure when userName changes
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -37,17 +52,9 @@ const Header = () => {
     <>
       <header ref={headerRef} className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center gap-4">
-          {/* IZQUIERDA */}
-          <div className="flex items-center gap-4">
-            <Link to="/" className="text-xl font-bold text-blue-600">BBTech</Link>
-            <Link to="/favorites" className="text-sm text-gray-600 hover:text-blue-600 border border-gray-300 rounded px-3 py-1">Favoritos</Link>
-            {isSeller && (
-              <>
-                <Link to="/HomeSellerDashboard" className="text-sm bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Dashboard</Link>
-                <Link to="/my-products" className="text-sm bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Productos</Link>
-                <Link to="/newProductPage" className="text-sm bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Publicar</Link>
-              </>
-            )}
+          {/* IZQUIERDA - Solo con el logo */}
+          <div className="flex items-center">
+            <Link to="/" className="text-xl font-bold text-primary">BBTech</Link>
           </div>
 
           {/* CENTRO */}
@@ -56,7 +63,7 @@ const Header = () => {
               <input
                 type="text"
                 placeholder="Buscar productos..."
-                className="w-full border rounded-full py-2 px-4 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-500"
+                className="w-full border rounded-full py-2 px-4 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-500 bg-secondary/20 focus:bg-white focus:text-black/80 "
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -98,7 +105,43 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <div style={{ paddingTop: `${headerHeight}px` }} />
+
+      {/* Navegación principal debajo del header */}
+      <nav 
+        ref={header2Ref} 
+        className={`fixed w-full z-40 bg-primary text-white py-2 px-6 ${userName ? "" : "hidden"}`}
+        style={{ top: headerHeight + 'px' }}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-evenly space-x-6 overflow-x-auto">
+          <Link to="/favorites" className="whitespace-nowrap text-sm hover:text-gray-300">Favoritos</Link>
+          
+          {isSeller && (
+            <>
+              <Link to="/HomeSellerDashboard" className="whitespace-nowrap text-sm hover:text-gray-300">Dashboard</Link>
+              <Link to="/my-products" className="whitespace-nowrap text-sm hover:text-gray-300">Productos</Link>
+              <Link to="/newProductPage" className="whitespace-nowrap text-sm hover:text-gray-300">Publicar</Link>
+            </>
+          )}
+        </div>
+      </nav>
+      
+      {/* Spacing to prevent content from being hidden under the fixed headers */}
+      <div className="header-spacer" style={{ paddingTop: userName ? (headerHeight + header2Height) + 'px' : headerHeight + 'px' }} />
+      
+      {/* Add resize listener effect to handle window resizing */}
+      {useEffect(() => {
+        const handleResize = () => {
+          if (headerRef.current) {
+            setHeaderHeight(headerRef.current.offsetHeight);
+          }
+          if (header2Ref.current) {
+            setHeader2Height(header2Ref.current.offsetHeight);
+          }
+        };
+        
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, [])}
     </>
   );
 };
